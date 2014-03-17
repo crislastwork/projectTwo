@@ -1,0 +1,13 @@
+IkukoBlogBundle:
+    resource: "@IkukoBlogBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/Blog
+
+IkukoAdminBundle:
+    resource: "@IkukoAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+IkukoIkukoBundle:
+    resource: "@IkukoIkukoBundle/Resources/config/routing.yml"
+    prefix:   /
+ 
+

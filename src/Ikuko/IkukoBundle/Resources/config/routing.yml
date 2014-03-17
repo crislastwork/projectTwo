@@ -1,0 +1,27 @@
+ikuko_homepage:
+    pattern:  /{_locale}
+    defaults: { _controller: IkukoIkukoBundle:Default:index, _locale: ca }
+    requirements:
+        _method:  GET
+        _locale: ca|es
+
+ikuko_colleccions:
+    pattern:  /{_locale}/colleccions
+    defaults: { _controller: IkukoIkukoBundle:Default:colleccions }
+    requirements:
+        _method:  GET
+        _locale: ca|es
+
+ikuko_about:
+    pattern:  /{_locale}/sobre-mi
+    defaults: { _controller: IkukoIkukoBundle:Default:about }
+    requirements:
+        _method:  GET
+        _locale: ca|es
+
+ikuko_contacte:
+    pattern:  /{_locale}/contacte
+    defaults: { _controller: IkukoIkukoBundle:Default:contacte }
+    requirements:
+        _method:  GET
+        _locale: ca|es

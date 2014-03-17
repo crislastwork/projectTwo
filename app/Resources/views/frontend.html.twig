@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome Ikuko!{% endblock %}</title>
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/ikukoikuko/css/estils.css') }}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+        <script type="text/javascript" src="{{ asset('bundles/ikukoikuko/js/jquery-1.11.0.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/ikukoikuko/js/masonry.js') }}"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,500,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+ 
+        {% set locale = app.request.locale %}
+        {% block header %}
+        <header>
+            <div id="menu">
+                <div id="inmenuleft">
+                    <img src="{{ asset(directori_imatges ~ 'logoikuko.png') }}" />
+                </div>
+
+                <div id="inmenuright">
+                    <ul>
+                        <li><a href="{{ path('ikuko_homepage') }}">{{ 'Inici' | trans | upper }} · </a></li>
+                        <li><a href="{{ path('ikuko_colleccions') }}">{{ 'Col.leccions' | trans | upper }} · </a></li>
+                        <li><a href="{{ path('ikuko_about') }}">{{ 'Sobre Ikuko' | trans | upper }} · </a></li>
+                        <li><a href="{{ path('ikuko_blog') }}">{{ 'Blog' | trans | upper }} · </a></li>
+                        <li><a href="{{ path('ikuko_contacte') }}">{{ 'Contacte' | trans | upper }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        
+        <footer>
+             
+                {% if locale == 'ca' %}
+                    <span>Català</span>
+                    <a href="{{ path('ikuko_homepage', { '_locale': 'es' }) }}">Castellano</a>
+                {% elseif locale == 'es' %}
+                    <a href="{{ path('ikuko_homepage', { '_locale': 'ca' }) }}">Català</a>
+                    <span>Castellano</span>
+                {% endif %}
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

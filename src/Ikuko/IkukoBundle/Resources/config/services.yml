@@ -1,0 +1,7 @@
+parameters:
+#    ikuko_ikuko.example.class: Ikuko\IkukoBundle\Example
+
+services:
+#    ikuko_ikuko.example:
+#        class: %ikuko_ikuko.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

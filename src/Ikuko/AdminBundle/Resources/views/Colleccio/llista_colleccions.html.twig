@@ -1,0 +1,34 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Imatge</th>
+        <th>Nom de la Col.lecció en Català</th>
+        <th>Nom de la Col.lecció en Català</th>
+        <th>Nom de la imatge</th>
+        <th>Edita</th>
+        <th>Elimina</th>
+    </tr>
+{% for colleccio in colleccions %}
+    <tr>
+        <td><img width="40px" src="{{ asset(directori_imatges ~ colleccio.rutaImatge) }}"/></td>
+        <td>{{ colleccio.titolCa }}</td>
+        <td>{{ colleccio.titolEs }}</td>
+        <td>{{ colleccio.nomImatge }}</td>
+        <td><a href={{ path('ikuko_admin_edita_colleccio', {'colleccio': colleccio.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
+        <td><a href={{ path('ikuko_admin_elimina_colleccio', {'colleccio': colleccio.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

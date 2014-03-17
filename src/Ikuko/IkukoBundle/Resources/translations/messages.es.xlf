@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="ca" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Inici</source>
+                <target>Inicio</target>
+            </trans-unit>
+            
+            <trans-unit id="2">
+                <source>Col.leccions</source>
+                <target>Colecciones</target>
+            </trans-unit>
+            
+            <trans-unit id="3">
+                <source>Sobre Ikuko</source>
+                <target>Sobre Ikuko</target>
+            </trans-unit>
+            
+            <trans-unit id="4">
+                <source>Blog</source>
+                <target>Blog</target>
+            </trans-unit>
+            
+            <trans-unit id="5">
+                <source>Contacte</source>
+                <target>Contacto</target>
+            </trans-unit>       
+            
+              <trans-unit id="6">
+                <source>ultimes noticies</source>
+                <target>últimas noticias</target>
+            </trans-unit>  
+            
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,18 @@
+
+{% block title %}Admin area{% endblock %}
+
+{% if error %}
+<div>{{ error.message }}</div>
+{% endif %}
+<form action="{{ path('ikuko_admin_login_check') }}" method="post">
+    <div>
+        <label for="username">Usuari:</label>
+        <input type="text" id="username" name="_username" />
+    </div>
+    <div>
+        <label for="password">Contrassenya:</label>
+        <input type="password" id="password" name="_password" />
+    </div>
+    <input class="boton" type="submit" name="login" value="Entrar" />
+</form>
+

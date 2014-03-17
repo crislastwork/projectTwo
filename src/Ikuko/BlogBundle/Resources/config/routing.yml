@@ -1,0 +1,14 @@
+ikuko_blog:
+    pattern:  /blog
+    defaults: { _controller: IkukoBlogBundle:Default:index }
+    requirements:
+        _method:  GET
+        _locale: ca|es
+
+ikuko_blog_detall:
+    pattern:  /{slug}
+    defaults: { _controller: IkukoBlogBundle:Default:index }
+    requirements:
+        _method:  GET
+        _locale: ca|es
+        

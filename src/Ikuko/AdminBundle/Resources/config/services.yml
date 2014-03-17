@@ -1,0 +1,7 @@
+parameters:
+#    ikuko_admin.example.class: Ikuko\AdminBundle\Example
+
+services:
+#    ikuko_admin.example:
+#        class: %ikuko_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

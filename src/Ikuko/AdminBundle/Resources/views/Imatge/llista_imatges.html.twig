@@ -1,0 +1,27 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Imatge</th>
+        <th>Nom de la imatge</th>
+        <th>Elimina</th>
+    </tr>
+{% for imatge in imatges %}
+    <tr>
+        <td><img width="40px" src="{{ asset(directori_imatges ~ imatge.rutaImatge) }}"/></td>
+        <td>{{ imatge.nom }}</td>
+        <td><a href={{ path('ikuko_admin_elimina_imatge', {'imatge': imatge.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

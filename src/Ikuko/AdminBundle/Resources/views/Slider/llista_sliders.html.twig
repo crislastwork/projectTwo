@@ -1,0 +1,34 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Slider</th>
+        <th>Nom Slider</th>
+        <th>Text en Català</th>
+        <th>Text en Castellà</th>
+        <th>Edita</th>
+        <th>Elimina</th>
+    </tr>
+{% for slider in sliders %}
+    <tr>
+        <td><img width="40px" src="{{ asset(directori_imatges ~ slider.rutaSlider) }}"/></td>
+        <td>{{ slider.nom }}</td>
+        <td>{{ slider.textCa }}</td>
+        <td>{{ slider.textEs }}</td>
+        <td><a href={{ path('ikuko_admin_edita_slider', {'slider': slider.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
+        <td><a href={{ path('ikuko_admin_elimina_slider', {'slider': slider.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

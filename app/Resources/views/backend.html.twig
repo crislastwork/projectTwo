@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome Admin!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            <a href="{{ path('ikuko_admin_sliders') }}">Sliders</a>
+            <a href="{{ path('ikuko_admin_nou_slider') }}">Slider+</a>
+            <a href="{{ path('ikuko_admin_colleccions') }}">Col.leccions</a>
+            <a href="{{ path('ikuko_admin_nova_colleccio') }}">Col.lecció+</a>
+            <a href="{{ path('ikuko_admin_productes') }}">Productes</a>
+            <a href="{{ path('ikuko_admin_nou_producte') }}">Producte+</a>
+            <a href="{{ path('ikuko_admin_tags') }}">Tags</a>
+            <a href="{{ path('ikuko_admin_nou_tag') }}">Tag+</a>
+            <a href="{{ path('ikuko_admin_blogs') }}">Blogs</a>
+            <a href="{{ path('ikuko_admin_nou_blog') }}">Blog+</a>
+            <a href="{{ path('ikuko_admin_categories') }}">Categories</a>
+            <a href="{{ path('ikuko_admin_nova_categoria') }}">Categoria+</a>
+            <a href="{{ path('ikuko_admin_imatges') }}">Imatges</a>
+            <a href="{{ path('ikuko_admin_nova_imatge') }}">Imatge+</a>
+            <a href="{{ path('ikuko_admin_llocs') }}">Llocs d'interés</a>
+            <a href="{{ path('ikuko_admin_nou_lloc') }}">Lloc d'interés+</a>
+            <a href="{{ path('ikuko_admin_comentaris') }}">Administra comentaris</a>
+        </header>
+        {% block body %}{% endblock %}
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

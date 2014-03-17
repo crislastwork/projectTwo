@@ -1,0 +1,30 @@
+security:
+    firewalls:
+        secured_area:
+            pattern: ^/admin/secured
+            provider:   admin_area
+            anonymous: ~
+            form_login:
+                login_path: /admin/secured/login
+                check_path: /admin/secured/login_check
+                always_use_default_target_path: true
+                default_target_path: /admin/secured/hello_cris
+            logout:
+                path: /admin_logout
+
+    access_control:
+        - { path: ^/admin/secured/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/secured/*, roles: ROLE_ADMIN }
+    
+    providers:
+        admin_area:
+            entity: { class: Ikuko\AdminBundle\Entity\Admin, property: login }
+    
+    encoders:
+        Ikuko\AdminBundle\Entity\Admin: { algorithm: sha512 }
+    
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    
+

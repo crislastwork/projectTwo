@@ -1,0 +1,55 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<form action="{{ path('ikuko_admin_nou_slider') }}" method="post"
+        {{ form_enctype(form) }}>
+
+    <div>
+                {{ form_label(form.nom) }}
+                {{ form_errors(form.nom) }}
+                {{ form_widget(form.nom) }}
+    </div>
+
+    <div>
+                {{ form_label(form.textCa) }}
+                {{ form_errors(form.textCa) }}
+                {{ form_widget(form.textCa) }}
+    </div>
+
+    <div>
+                {{ form_label(form.textEs) }}
+                {{ form_errors(form.textEs) }}
+                {{ form_widget(form.textEs) }}
+    </div>
+
+    <div>
+                {{ form_label(form.color) }}
+                {{ form_errors(form.color) }}
+                {{ form_widget(form.color) }}
+    </div>
+
+    <div>
+                {{ form_label(form.posicio) }}
+                {{ form_errors(form.posicio) }}
+                {{ form_widget(form.posicio) }}
+    </div>
+
+    <div>
+                {{ form_label(form.imatge) }}
+                {{ form_errors(form.imatge) }}
+                {{ form_widget(form.imatge) }}
+    </div>
+
+            {{ form_widget(form) }}
+
+    <input class="boton" type="submit" value="Desa" />
+</form> 
+
+{% endblock %}

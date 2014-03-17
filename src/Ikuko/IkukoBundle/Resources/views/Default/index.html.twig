@@ -1,0 +1,122 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<!-- Jssor Slider Begin -->
+<!-- You can move inline styles (except 'top', 'left', 'width' and 'height') to css file or css block. -->
+<div id="slider1_container" style="position: relative; width: 1351px; height: 430px; overflow: hidden; margin:auto;">
+    <!-- Slides Container -->
+    <div u="slides" style="cursor: move; position: absolute; width: 1351px; height: 430px; top: 0px;
+         left: 0px; overflow: hidden;">
+        {% if locale == 'ca' %}
+            {% for slider in sliders %}
+            <div><img u="image" src="{{ asset(directori_imatges ~ slider.rutaSlider) }}" />
+                <div id="textslider" style="text-align:{{ slider.posicio }}; color:{{ slider.color }}">
+                <h1 style="padding-left:20%; padding-right:20%; padding-top:20%;">{{ slider.textCa }}</h1></div>
+            </div>
+            {% endfor %}
+        {% elseif locale == 'es' %}
+            {% for slider in sliders %}
+            <div><img u="image" src="{{ asset(directori_imatges ~ slider.rutaSlider) }}" />
+            <div id="textslider" style="text-align:{{ slider.posicio }}; color:{{ slider.color }}">
+                <h1 style="padding-left:20%; padding-right:20%; padding-top:20%;">{{ slider.textEs }}</h1></div>
+            </div>
+            {% endfor %}
+        {% endif %} 
+    </div>
+    <!-- Direction Navigator Skin Begin -->
+    <span u="arrowleft" class="jssord20l" style="width: 55px; height: 55px; top: 123px; left: 8px;"></span>
+    <span u="arrowright" class="jssord20r" style="width: 55px; height: 55px; top: 123px; right: 8px"></span>
+</div>
+<!-- Jssor Slider End -->
+
+<!-- ultims blogs -->
+<div id="newblogs">
+<div class="contentnot">
+
+<div id="newstitle"><strong>{{ 'ultimes noticies' | trans | upper }}</strong></div>
+
+<div id="co">
+
+{% if locale == 'ca' %}
+    {% for blog in blogs %}
+        <div class="item masonry-brick">
+            <img src="{{ asset(directori_imatges ~ blog.rutaImatge) }}" width="299px"/>
+            <a href="{{ path('ikuko_blog_detall', { 'slug': blog.slug }) }}"><h5>{{ blog.titolCa }}</h5></a>
+            <p>{{ blog.blogCa|length > 500           ? 
+                               blog.blogCa|slice(0, 500)~ '...'   : 
+                               blog.blogCa}}</p>
+        </div>
+    {% endfor %}
+{% elseif locale == 'es' %}
+    {% for blog in blogs %}
+        <div class="item masonry-brick" width="299px">
+            <img src="{{ asset(directori_imatges ~ blog.rutaImatge) }}"/>
+            <h5>{{ blog.titolEs }}</h5>
+            <p>{{ blog.blogEs|length > 500           ? 
+                               blog.blogEs|slice(0, 500)~ '...'   : 
+                               blog.blogEs}}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+</div>
+</div>
+</div>
+<!-- fi ultims blogs -->
+<div id="separador"><div>
+
+{% block scriptslider %}
+<!-- it works the same with all jquery version from 1.3.1 to 2.0.3 -->
+<script type="text/javascript" src="{{ asset('bundles/ikukoikuko/js/jssor.core.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/ikukoikuko/js/jssor.utils.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/ikukoikuko/js/jssor.slider.js') }}"></script>
+<script>
+
+    jQuery(document).ready(function($) {
+
+        var options = {
+            $DragOrientation: 3, //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+            $SlideDuration: 900, //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+            $AutoPlay: true,
+            $DirectionNavigatorOptions: {
+                $Class: $JssorDirectionNavigator$, //[Requried] Class to create direction navigator instance
+                $ChanceToShow: 2, //[Required] 0 Never, 1 Mouse Over, 2 Always
+                $AutoCenter: 2, //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                $Steps: 1    //[Optional] Steps to go for each navigation request, default value is 1
+            }
+        };
+
+        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+        //responsive code begin
+        //you can remove responsive code if you don't want the slider scales while window resizes
+        function ScaleSlider() {
+            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+            if (parentWidth)
+                jssor_slider1.$SetScaleWidth(parentWidth);
+            else
+                window.setTimeout(ScaleSlider, 30);
+        }
+
+        //Scale slider immediately
+        ScaleSlider();
+
+        if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+            $(window).bind('resize', ScaleSlider);
+        }
+        //responsive code end
+
+
+    });
+    //masonry
+    $(window).load(function() {
+        $('#co').masonry({
+            // options
+            itemSelector: '.item'
+        });
+    });
+</script>
+
+{% endblock %}
+
+{% endblock %}

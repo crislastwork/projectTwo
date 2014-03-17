@@ -1,0 +1,46 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Imatge</th>
+        <th>Nom Català</th>
+        <th>Nom Castellà</th>
+        <th>Descripció Català</th>
+        <th>Descripció Castellà</th>
+        <th>Col.leccio</th>
+        <th>Tag</th>
+        <th>Preu</th>
+        <th>Talles</th>
+        <th>Venut</th>
+        <th>Edita</th>
+        <th>Elimina</th>
+    </tr>
+{% for producte in productes %}
+    <tr>
+        <td><img width="40px" src="{{ asset(directori_imatges ~ producte.rutaImatgeA) }}"/></td>
+        <td>{{ producte.nomCa }}</td>
+        <td>{{ producte.nomEs }}</td>
+        <td>{{ producte.descripcioCa }}</td>
+        <td>{{ producte.descripcioEs }}</td>
+        <td>{{ producte.colleccioCa.titolCa }}</td>
+        <td>{{ producte.tagCa.TagCa }}</td>
+        <td>{{ producte.preu }}</td>
+        <td>{{ producte.talles }}</td>
+        <td>{{ producte.venut ? 'sí' : 'no' }}</td>
+        <td><a href={{ path('ikuko_admin_edita_producte', {'producte': producte.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
+        <td><a href={{ path('ikuko_admin_elimina_producte', {'producte': producte.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

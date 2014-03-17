@@ -1,0 +1,30 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Nom de la Categoria en Català</th>
+        <th>Nom de la Categoria en Català</th>
+        <th>Edita</th>
+        <th>Elimina</th>
+    </tr>
+{% for categoria in categories %}
+    <tr>
+        <td>{{ categoria.titolCa }}</td>
+        <td>{{ categoria.titolEs }}</td>
+        <td><a href={{ path('ikuko_admin_edita_categoria', {'categoria': categoria.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
+        <td><a href={{ path('ikuko_admin_elimina_categoria', {'categoria': categoria.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

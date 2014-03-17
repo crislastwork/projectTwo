@@ -1,0 +1,43 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Imatge</th>
+        <th>Títol Català</th>
+        <th>Títol Castellà</th>
+        <th>Post en Català</th>
+        <th>Post en Castellà</th>
+        <th>Categoria</th>
+        <th>Autor/a</th>
+        <th>Data de publicació</th>
+        <th>Edita</th>
+        <th>Elimina</th>
+    </tr>
+{% for blog in blogs %}
+    <tr>
+        <td><img width="40px" src="{{ asset(directori_imatges ~ blog.rutaImatge) }}"/></td>
+        <td>{{ blog.titolCa }}</td>
+        <td>{{ blog.titolEs }}</td>
+        <td>{{ blog.blogCa }}</td>
+        <td>{{ blog.blogEs }}</td>
+        <td>{{ blog.categoriaCa.titolCa }}</td>
+        <td>{{ blog.autor }}</td>
+        <td>{{ blog.dataPublicacio|date('Y-m-d') }}</td>
+
+        <td><a href={{ path('ikuko_admin_edita_blog', {'blog': blog.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
+        <td><a href={{ path('ikuko_admin_elimina_blog', {'blog': blog.id }) }}>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<form action="{{ path('ikuko_admin_nou_producte') }}" method="post"
+        {{ form_enctype(form) }}>
+
+    <div>
+                {{ form_label(form.colleccioCa) }}
+                {{ form_errors(form.colleccioCa) }}
+                {{ form_widget(form.colleccioCa) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.tagCa) }}
+                {{ form_errors(form.tagCa) }}
+                {{ form_widget(form.tagCa) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.nomCa) }}
+                {{ form_errors(form.nomCa) }}
+                {{ form_widget(form.nomCa) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.nomEs) }}
+                {{ form_errors(form.nomEs) }}
+                {{ form_widget(form.nomEs) }}
+    </div>
+
+    <div>
+                {{ form_label(form.descripcioCa) }}
+                {{ form_errors(form.descripcioCa) }}
+                {{ form_widget(form.descripcioCa) }}
+    </div>
+
+    <div>
+                {{ form_label(form.descripcioEs) }}
+                {{ form_errors(form.descripcioEs) }}
+                {{ form_widget(form.descripcioEs) }}
+    </div>
+
+    <div>
+                {{ form_label(form.preu) }}
+                {{ form_errors(form.preu) }}
+                {{ form_widget(form.preu) }}
+    </div>
+
+    <div>
+                {{ form_label(form.talles) }}
+                {{ form_errors(form.talles) }}
+                {{ form_widget(form.talles) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.linkCompra) }}
+                {{ form_errors(form.linkCompra) }}
+                {{ form_widget(form.linkCompra) }}
+    </div>
+
+    <div>
+                {{ form_label(form.venut) }}
+                {{ form_errors(form.venut) }}
+                {{ form_widget(form.venut) }}
+    </div>    
+    
+    <div>
+                {{ form_label(form.imatgeA) }}
+                {{ form_errors(form.imatgeA) }}
+                {{ form_widget(form.imatgeA) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.imatgeB) }}
+                {{ form_errors(form.imatgeB) }}
+                {{ form_widget(form.imatgeB) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.imatgeC) }}
+                {{ form_errors(form.imatgeC) }}
+                {{ form_widget(form.imatgeC) }}
+    </div>
+    
+    <div>
+                {{ form_label(form.imatgeD) }}
+                {{ form_errors(form.imatgeD) }}
+                {{ form_widget(form.imatgeD) }}
+    </div>
+
+            {{ form_widget(form) }}
+
+    <input class="boton" type="submit" value="Desa" />
+</form> 
+
+{% endblock %}
