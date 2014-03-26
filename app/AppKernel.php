@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Ikuko\AdminBundle\IkukoAdminBundle(),
             new Ikuko\BlogBundle\IkukoBlogBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
