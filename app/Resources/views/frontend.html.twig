@@ -13,7 +13,7 @@
         <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     </head>
     <body>
- 
+
         {% set locale = app.request.locale %}
         {% block header %}
         <header>
@@ -25,7 +25,11 @@
                 <div id="inmenuright">
                     <ul>
                         <li><a href="{{ path('ikuko_homepage') }}">{{ 'Inici' | trans | upper }} · </a></li>
-                        <li><a href="{{ path('ikuko_colleccions') }}">{{ 'Col.leccions' | trans | upper }} · </a></li>
+                        <li class="dropdown"><a href="">{{ 'Col.leccions' | trans | upper }} · </a>
+                            <ul class="dropdown-menu">
+                                {{ render(controller('IkukoIkukoBundle:Default:llistaColleccions')) }}
+                            </ul>
+                        </li>
                         <li><a href="{{ path('ikuko_about') }}">{{ 'Sobre Ikuko' | trans | upper }} · </a></li>
                         <li><a href="{{ path('ikuko_blog') }}">{{ 'Blog' | trans | upper }} · </a></li>
                         <li><a href="{{ path('ikuko_contacte') }}">{{ 'Contacte' | trans | upper }}</a></li>
@@ -35,17 +39,18 @@
         </header>
         {% endblock %}
         {% block body %}{% endblock %}
-        
+
         <footer>
-             
+
                 {% if locale == 'ca' %}
-                    <span>Català</span>
-                    <a href="{{ path('ikuko_homepage', { '_locale': 'es' }) }}">Castellano</a>
+            <span>Català</span>
+            <a href="{{ path('ikuko_homepage', { '_locale': 'es' }) }}">Castellano</a>
                 {% elseif locale == 'es' %}
-                    <a href="{{ path('ikuko_homepage', { '_locale': 'ca' }) }}">Català</a>
-                    <span>Castellano</span>
+            <a href="{{ path('ikuko_homepage', { '_locale': 'ca' }) }}">Català</a>
+            <span>Castellano</span>
                 {% endif %}
         </footer>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
