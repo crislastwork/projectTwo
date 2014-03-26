@@ -1,0 +1,44 @@
+{% extends '::backend.html.twig' %}
+
+{% block body %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<table>
+    <tr>
+        <th>Blog</th>
+        <th>Comentari</th>
+        <th>Usuari</th>
+        <th>Data de publicació</th>
+        <th>Elimina</th>
+    </tr>
+{% for comentari in comentaris %}
+    <tr>
+        <td>{{ comentari.blogCa.titolCa }}</td>
+        <td>{{ comentari.comentari }}</td>
+        <td>{{ comentari.usuari }}</td>
+        <td>{{ comentari.dataPublicacio|date('Y-m-d') }}</td>
+
+        <td><a href={{ path('ikuko_admin_elimina_comentari', {'id_comentari': comentari.id }) }} class='confirmacio'>
+            <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar el comentari?');
+    });
+    
+</script>
+
+{% endblock %}

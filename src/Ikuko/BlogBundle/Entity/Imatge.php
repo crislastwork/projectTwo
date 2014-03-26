@@ -22,7 +22,7 @@ class Imatge
     protected $nom;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $ruta_imatge;
+    protected $rutaImatge;
     
     /** @Assert\Image(maxSize= "1000k") */
     protected $imatge;
@@ -41,11 +41,11 @@ class Imatge
     }
     
      public function getRutaImatge(){
-        return $this->ruta_imatge;
+        return $this->rutaImatge;
     }
     
     public function setRutaImatge($ruta_imatge){
-        $this->ruta_imatge = $ruta_imatge;
+        $this->rutaImatge = $ruta_imatge;
     }
 
     /**

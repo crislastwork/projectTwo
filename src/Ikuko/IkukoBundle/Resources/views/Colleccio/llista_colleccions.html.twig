@@ -1,0 +1,14 @@
+{% set locale = app.request.locale %}
+{% if locale == 'ca' %}
+    {% for colleccio in colleccions %}
+        <li><a href="{{ path('ikuko_colleccio', {'id': colleccio.id, 'slug': colleccio.slug}) }}">
+        {{ colleccio.titolCa }}
+        </a></li>
+    {% endfor %}
+{% elseif locale == 'es' %}
+    {% for colleccio in colleccions %}
+    <li><a href="{{ path('ikuko_colleccio', {'id': colleccio.id, 'slug': colleccio.slug}) }}">
+    {{ colleccio.titolEs }}
+    </a></li>
+{% endfor %}
+{% endif %}

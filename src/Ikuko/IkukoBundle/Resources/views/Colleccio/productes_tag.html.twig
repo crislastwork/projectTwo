@@ -1,0 +1,63 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<div id="head"></div>
+{% set locale = app.request.locale %}
+
+{% if locale == 'ca' %}
+
+<h1>{{ pagination[0].tagCa.tagCa }}</h1>
+
+    {% for producte in pagination %}
+
+    <h1>{{ producte.nomCa }}</h1>
+    <p>{{ producte.descripcioCa }}</p>
+        {{ producte.preu }}<br>
+        {{ producte.talles }}<br>
+        {{ producte.linkCompra }}<br>
+        {% if producte.venut == true %}
+            {{ 'VENUT!' }}<br>
+        {% else %}
+            {{ 'PRODUCTE DISPONIBLE!' }}<br>
+        {% endif %}
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeA) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeB) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeC) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeD) }}" width="200">
+
+    {% endfor %}
+
+{% elseif locale == 'es' %}
+
+<h1>{{ pagination[0].tagEs.tagEs }}</h1>
+
+    {% for producte in pagination %}
+
+    <h1>{{ producte.nomEs }}</h1>
+    <p>{{ producte.descripcioEs }}</p>
+        {{ producte.preu }}<br>
+        {{ producte.talles }}<br>
+        {{ producte.linkCompra }}<br>
+        {% if producte.venut == true %}
+            {{ 'VENDIDO!' }}<br>
+        {% else %}
+            {{ 'PRODUCTO DISPONIBLE!' }}<br>
+        {% endif %}
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeA) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeB) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeC) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeD) }}" width="200">
+
+    {% endfor %}       
+        
+{% endif %}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+        
+{% block javascript %}
+{% endblock %}
+
+{% endblock %}

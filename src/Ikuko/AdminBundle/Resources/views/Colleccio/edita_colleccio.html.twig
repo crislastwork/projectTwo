@@ -8,7 +8,7 @@
     </div>
 {% endfor %}
 
-<form action="{{ path('ikuko_admin_edita_colleccio', {'colleccio': colleccio.id } ) }}" method="post"
+<form action="{{ path('ikuko_admin_edita_colleccio', {'id_colleccio': colleccio.id } ) }}" method="post"
         {{ form_enctype(form) }}>
 
     <div>

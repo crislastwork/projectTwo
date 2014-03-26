@@ -5,9 +5,9 @@ ikuko_homepage:
         _method:  GET
         _locale: ca|es
 
-ikuko_colleccions:
-    pattern:  /{_locale}/colleccions
-    defaults: { _controller: IkukoIkukoBundle:Default:colleccions }
+ikuko_colleccio:
+    pattern:  /{_locale}/{id}/colleccio_{slug}/pag_{page}
+    defaults: { _controller: IkukoIkukoBundle:Colleccio:colleccio, page: 1 }
     requirements:
         _method:  GET
         _locale: ca|es
@@ -22,6 +22,13 @@ ikuko_about:
 ikuko_contacte:
     pattern:  /{_locale}/contacte
     defaults: { _controller: IkukoIkukoBundle:Default:contacte }
+    requirements:
+        _method:  GET|POST
+        _locale: ca|es
+
+ikuko_productes_tag:
+    pattern:  /{_locale}/{id}/colleccio_{slug}/{tag}/pag_{page}
+    defaults: { _controller: IkukoIkukoBundle:Colleccio:productesTag, page: 1 }
     requirements:
         _method:  GET
         _locale: ca|es

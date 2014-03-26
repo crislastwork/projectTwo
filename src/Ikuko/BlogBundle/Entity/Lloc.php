@@ -16,10 +16,10 @@ class Lloc
     protected $id;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $nom_ca;
+    protected $nomCa;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $nom_es;
+    protected $nomEs;
     
     /** @ORM\Column(type="string", length=100)*/
     protected $link;
@@ -30,19 +30,19 @@ class Lloc
     }
     
     public function getNomCa(){
-        return $this->nom_ca;
+        return $this->nomCa;
     }
     
     public function setNomCa($nom_ca){
-        $this->nom_ca = $nom_ca;
+        $this->nomCa = $nom_ca;
     }
     
     public function getNomEs(){
-        return $this->nom_es;
+        return $this->nomEs;
     }
     
     public function setNomEs($nom_es){
-        $this->nom_es = $nom_es;
+        $this->nomEs = $nom_es;
     }
     
     public function getLink(){

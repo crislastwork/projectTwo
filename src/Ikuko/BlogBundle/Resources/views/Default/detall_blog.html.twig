@@ -1,0 +1,41 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<div id="head"></div>
+
+<div>
+{% if locale == 'ca' %}
+
+            <img src="{{ asset(directori_imatges ~ blog.rutaImatge) }}" width="299px"/>
+            <h5>{{ blog.titolCa }}</h5></a>
+            <p>{{ blog.blogCa }}</p>
+            <p>{{ 'data publicacio' | trans }}: {{ blog.dataPublicacio|date('d-m-Y') }}</p>
+        
+{% elseif locale == 'es' %}
+
+            <img src="{{ asset(directori_imatges ~ blog.rutaImatge) }}" width="299px"/>
+            <h5>{{ blog.titolEs }}</h5></a>
+            <p>{{ blog.blogEs }}</p>
+            <p>{{ 'data publicacio' | trans }}: {{ blog.dataPublicacio|date('d-m-Y') }}</p>
+
+{% endif %}
+</div>
+     
+<h3>{{ 'afegeix un comentari' | trans }}</h3>
+        
+    {% render(controller('IkukoBlogBundle:Default:nouComentari', { 'id': blog.id, 'slug': blog.slug })) %}
+
+<div id="comments">{% include "IkukoBlogBundle:Comentari:comentaris.html.twig" %}</div>
+
+<script>
+$("#comments").on("click",".pagination span a", function(){
+    $("#comments").html("{{ 'carregant comentaris'|trans }}");
+    $.get($(this).attr("href"), function(data) {
+        $('#comments').html(data);
+    });
+    return false;
+});
+</script>
+
+{% endblock %}

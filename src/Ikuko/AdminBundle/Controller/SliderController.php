@@ -47,11 +47,11 @@ class SliderController extends Controller {
         ));
     }
 
-    public function editaSliderAction(Request $request, $slider) {
+    public function editaSliderAction(Request $request, $id_slider) {
 
         $em = $this->getDoctrine()->getManager();
         $slider = $em->getRepository('IkukoIkukoBundle:Slider')
-                ->findOneBy(array('id' => $slider));
+                ->findOneBy(array('id' => $id_slider));
 
         $form = $this->createForm(new NouSliderTypeForm(), $slider);
 
@@ -82,13 +82,13 @@ class SliderController extends Controller {
         ));
     }
 
-    public function eliminaSliderAction($slider) {
+    public function eliminaSliderAction($id_slider) {
         $em = $this->getDoctrine()->getManager();
         $slider = $em->getRepository('IkukoIkukoBundle:Slider')
-                ->findOneBy(array('id' => $slider));
+                ->findOneBy(array('id' => $id_slider));
 
-        if (!$slider) {
-            throw $this->createNotFoundException('No s\'ha trobat cap slider amb id: ' . $slider);
+        if (!$id_slider) {
+            throw $this->createNotFoundException('No s\'ha trobat cap slider amb id: ' . $id_slider);
         }
         $em->remove($slider);
         $em->flush();

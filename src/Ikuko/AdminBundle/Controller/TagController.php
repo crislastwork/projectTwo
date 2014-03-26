@@ -41,11 +41,11 @@ class TagController extends Controller
         ));
     }
 
-    public function editaTagAction(Request $request, $tag) {
+    public function editaTagAction(Request $request, $id_tag) {
 
         $em = $this->getDoctrine()->getManager();
         $tag = $em->getRepository('IkukoIkukoBundle:Tag')
-                ->findOneBy(array('id' => $tag));
+                ->findOneBy(array('id' => $id_tag));
 
         $form = $this->createForm(new NouTagTypeForm(), $tag);
 
@@ -68,19 +68,24 @@ class TagController extends Controller
         ));
     }
 
-    public function eliminaTagAction($tag) {
+    public function eliminaTagAction($id_tag) {
         $em = $this->getDoctrine()->getManager();
         $tag = $em->getRepository('IkukoIkukoBundle:Tag')
-                ->findOneBy(array('id' => $tag));
+                ->findOneBy(array('id' => $id_tag));
 
-        if (!$tag) {
-            throw $this->createNotFoundException('No s\'ha trobat cap tag amb id: ' . $tag);
+        if (!$id_tag) {
+            throw $this->createNotFoundException('No s\'ha trobat cap tag amb id: ' . $id_tag);
         }
-        $em->remove($tag);
-        $em->flush();
 
-        $this->get('session')->getFlashBag()->add('notice', 'Tag eliminat amb èxit!');
-
+        try{
+            $em->remove($tag);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Tag eliminat amb èxit!');
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            
+            $this->get('session')->getFlashBag()->add('notice', 'IMPOSSIBLE ELIMINAR EL TAG!');
+        }
+        
         return $this->forward('IkukoAdminBundle:Tag:llistaTags');
     }
 

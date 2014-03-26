@@ -47,11 +47,11 @@ class ColleccioController extends Controller {
         ));
     }
 
-    public function editaColleccioAction(Request $request, $colleccio) {
+    public function editaColleccioAction(Request $request, $id_colleccio) {
 
         $em = $this->getDoctrine()->getManager();
         $colleccio = $em->getRepository('IkukoIkukoBundle:Colleccio')
-                ->findOneBy(array('id' => $colleccio));
+                ->findOneBy(array('id' => $id_colleccio));
 
         $form = $this->createForm(new NovaColleccioTypeForm(), $colleccio);
 
@@ -82,18 +82,23 @@ class ColleccioController extends Controller {
         ));
     }
 
-    public function eliminaColleccioAction($colleccio) {
+    public function eliminaColleccioAction($id_colleccio) {
         $em = $this->getDoctrine()->getManager();
         $colleccio = $em->getRepository('IkukoIkukoBundle:Colleccio')
-                ->findOneBy(array('id' => $colleccio));
+                ->findOneBy(array('id' => $id_colleccio));
 
-        if (!$colleccio) {
-            throw $this->createNotFoundException('No s\'ha trobat cap col.lecció amb id: ' . $colleccio);
+        if (!$id_colleccio) {
+            throw $this->createNotFoundException('No s\'ha trobat cap col.lecció amb id: ' . $id_colleccio);
         }
-        $em->remove($colleccio);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add('notice', 'Col.lecció eliminada amb èxit!');
+        
+        try{
+            $em->remove($colleccio);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Col.lecció eliminada amb èxit!');
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            
+            $this->get('session')->getFlashBag()->add('notice', 'IMPOSSIBLE ELIMINAR LA COL.LECCIÓ!');
+        }
 
         return $this->forward('IkukoAdminBundle:Colleccio:llistaColleccions');
     }

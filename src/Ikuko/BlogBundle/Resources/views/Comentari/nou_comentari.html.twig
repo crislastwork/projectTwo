@@ -1,0 +1,19 @@
+<form action="{{ path('ikuko_blog_comentari_nou', { 'id' : id, 'slug': slug } ) }}"
+            method="post" {{ form_enctype(form) }}>
+            {{ form_errors(form) }}
+    
+            {{ 'usuari' | trans }}:<br>
+            {{ form_errors(form.usuari) }}
+            {{ form_widget(form.usuari) }}<br>
+            
+            {{ 'comentari' | trans }}:<br>
+            {{ form_errors(form.comentari) }}
+            {{ form_widget(form.comentari) }}<br>
+            
+            {{ form_rest(form) }}
+            
+            <input type="submit" value="Envia" />
+</form>
+
+
+

@@ -45,13 +45,13 @@ class ImatgeController extends Controller {
         ));
     }
 
-    public function eliminaImatgeAction($imatge) {
+    public function eliminaImatgeAction($id_imatge) {
         $em = $this->getDoctrine()->getManager();
         $imatge = $em->getRepository('IkukoBlogBundle:Imatge')
-                ->findOneBy(array('id' => $imatge));
+                ->findOneBy(array('id' => $id_imatge));
 
-        if (!$imatge) {
-            throw $this->createNotFoundException('No s\'ha trobat cap imatge amb id: ' . $imatge);
+        if (!$id_imatge) {
+            throw $this->createNotFoundException('No s\'ha trobat cap imatge amb id: ' . $id_imatge);
         }
         $em->remove($imatge);
         $em->flush();

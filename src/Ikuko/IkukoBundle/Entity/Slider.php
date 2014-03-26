@@ -21,10 +21,10 @@ class Slider
     protected $nom;
     
     /** @ORM\Column(type="text")*/
-    protected $text_ca;
+    protected $textCa;
     
     /** @ORM\Column(type="text")*/
-    protected $text_es;
+    protected $textEs;
     
     /** @ORM\Column(type="string", length=20)*/
     protected $color;
@@ -33,7 +33,7 @@ class Slider
     protected $posicio;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $ruta_slider;
+    protected $rutaSlider;
     
     /** @Assert\Image(maxSize= "1000k") */
     protected $imatge;
@@ -52,19 +52,19 @@ class Slider
     }
     
     public function getTextCa(){
-        return $this->text_ca;
+        return $this->textCa;
     }
     
     public function setTextCa($text_ca){
-        $this->text_ca = $text_ca;
+        $this->textCa = $text_ca;
     }
     
     public function getTextEs(){
-        return $this->text_es;
+        return $this->textEs;
     }
     
     public function setTextEs($text_es){
-        $this->text_es = $text_es;
+        $this->textEs = $text_es;
     }
     
     public function getColor(){
@@ -84,11 +84,11 @@ class Slider
     }
     
     public function getRutaSlider(){
-        return $this->ruta_slider;
+        return $this->rutaSlider;
     }
     
     public function setRutaSlider($ruta_slider){
-        $this->ruta_slider = $ruta_slider;
+        $this->rutaSlider = $ruta_slider;
     }
 
     /**

@@ -18,10 +18,22 @@
     <tr>
         <td><img width="40px" src="{{ asset(directori_imatges ~ imatge.rutaImatge) }}"/></td>
         <td>{{ imatge.nom }}</td>
-        <td><a href={{ path('ikuko_admin_elimina_imatge', {'imatge': imatge.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_imatge', {'id_imatge': imatge.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar la imatge?');
+    });
+    
+</script>
 
 {% endblock %}

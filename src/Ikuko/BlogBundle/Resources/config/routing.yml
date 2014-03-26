@@ -1,14 +1,30 @@
 ikuko_blog:
-    pattern:  /blog
-    defaults: { _controller: IkukoBlogBundle:Default:index }
+    pattern:  /index_blogs/pag_{page}
+    defaults: { _controller: IkukoBlogBundle:Default:index, page: 1 }
     requirements:
         _method:  GET
         _locale: ca|es
 
 ikuko_blog_detall:
-    pattern:  /{slug}
-    defaults: { _controller: IkukoBlogBundle:Default:index }
+    pattern:  /{id}/blog_{slug}
+    defaults: { _controller: IkukoBlogBundle:Default:detallBlog }
+    requirements:
+        _method:  GET|POST
+        _locale: ca|es
+
+ikuko_blog_categoria:
+    pattern:  /{id}/categoria_{slug}/pag_{page}
+    defaults: { _controller: IkukoBlogBundle:Default:categoriaBlog, page: 1 }
     requirements:
         _method:  GET
         _locale: ca|es
+
+ikuko_blog_comentari_nou:
+    pattern:  /{id}/{slug}/comentari/
+    defaults: { _controller: IkukoBlogBundle:Default:nouComentari }
+    requirements:
+        _method:  GET|POST
+        blog_id: \d+
+
+
         

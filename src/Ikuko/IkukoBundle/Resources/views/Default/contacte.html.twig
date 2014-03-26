@@ -1,0 +1,46 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<div id="head"></div>
+{% set locale = app.request.locale %}
+
+{% for flashMessage in app.session.flashbag.get('ikuko-notice') %}
+    <div class="ikuko-notice">
+        {% if flashMessage == 'Missatge enviat correctament. Gràcies!' %}
+            {{ 'Missatge enviat correctament. Gràcies!' | trans }}
+        {% else %}
+            {{ flashMessage }}
+        {% endif %}
+    </div>
+{% endfor %}
+
+<form action="{{ path('ikuko_contacte') }}" method="post" {{ form_enctype(form) }} >
+        {{ form_errors(form) }}
+        
+        {{ 'nom' | trans }}:<br>
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}<br>
+        
+        {{ 'email' | trans }}:<br>
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}<br>
+    
+        {{ 'assumpte' | trans }}:<br>
+        {{ form_errors(form.subject) }}
+        {{ form_widget(form.subject) }}<br>
+        
+        {{ 'missatge' | trans }}:<br>
+        {% if form_errors(form.body) == 'El missatge hauria de ser més llarg!' %}
+            {{ 'El missatge hauria de ser més llarg!' | trans }}
+        {% else %}
+            {{ form_errors(form.body) }}
+        {% endif %}
+        {{ form_widget(form.body) }}<br>
+    
+        {{ form_rest(form) }}
+
+    <input type="submit" value="Envia" />
+</form>
+
+{% endblock %}

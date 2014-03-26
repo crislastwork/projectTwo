@@ -19,16 +19,16 @@ class Producte
     protected $id;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $nom_ca;
+    protected $nomCa;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $nom_es;
+    protected $nomEs;
     
     /** @ORM\Column(type="text")*/
-    protected $descripcio_ca;
+    protected $descripcioCa;
     
     /** @ORM\Column(type="text")*/
-    protected $descripcio_es;
+    protected $descripcioEs;
     
     /** @ORM\Column(type="decimal", precision=6, scale=2)*/
     protected $preu;
@@ -37,61 +37,61 @@ class Producte
     protected $talles;
     
     /** @ORM\Column(type="string", length=100, nullable=true)*/
-    protected $link_compra;
+    protected $linkCompra;
     
     /** @ORM\Column(type="boolean")*/
     protected $venut;
       
     /** @ORM\Column(type="string", length=30, nullable=true)*/
-    protected $ruta_imatge_a;
+    protected $rutaImatgeA;
     
     /** @ORM\Column(type="string", length=30, nullable=true)*/
-    protected $ruta_imatge_b;
+    protected $rutaImatgeB;
     
     /** @ORM\Column(type="string", length=30, nullable=true)*/
-    protected $ruta_imatge_c;
+    protected $rutaImatgeC;
     
     /** @ORM\Column(type="string", length=30, nullable=true)*/
-    protected $ruta_imatge_d;
+    protected $rutaImatgeD;
     
     /** @Assert\Image(maxSize= "1000k") */
-    protected $imatge_a;
+    protected $imatgeA;
     
     /** @Assert\Image(maxSize= "1000k") */
-    protected $imatge_b;
+    protected $imatgeB;
     
     /** @Assert\Image(maxSize= "1000k") */
-    protected $imatge_c;
+    protected $imatgeC;
     
     /** @Assert\Image(maxSize= "1000k") */
-    protected $imatge_d;
+    protected $imatgeD;
     
     /** @ORM\Column(type="string", length=30)*/
     protected $slug;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Colleccio", inversedBy="productes_ca")
-     * @ORM\JoinColumn(name="colleccio_ca_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Colleccio", inversedBy="productesCa")
+     * @ORM\JoinColumn(name="colleccioCaId", referencedColumnName="id")
      */
-    protected $colleccio_ca;
+    protected $colleccioCa;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Colleccio", inversedBy="productes_es")
-     * @ORM\JoinColumn(name="colleccio_es_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Colleccio", inversedBy="productesEs")
+     * @ORM\JoinColumn(name="colleccioEsId", referencedColumnName="id")
      */
-    protected $colleccio_es;
+    protected $colleccioEs;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="productes_ca")
-     * @ORM\JoinColumn(name="tag_ca_id", referencedColumnName="id") 
+     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="productesCa")
+     * @ORM\JoinColumn(name="tagCaId", referencedColumnName="id") 
      */
-    protected $tag_ca;
+    protected $tagCa;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="productes_es")
-     * @ORM\JoinColumn(name="tag_es_id", referencedColumnName="id") 
+     * @ORM\ManyToOne(targetEntity="Tag", inversedBy="productesEs")
+     * @ORM\JoinColumn(name="tagEsId", referencedColumnName="id") 
      */
-    protected $tag_es;
+    protected $tagEs;
    
     
     public function getId(){
@@ -99,36 +99,36 @@ class Producte
     }
     
     public function getNomCa(){
-        return $this->nom_ca;
+        return $this->nomCa;
     }
     
     public function setNomCa($nom_ca){
-        $this->nom_ca = $nom_ca;
+        $this->nomCa = $nom_ca;
         $this->slug = Util::getSlug($nom_ca);
     }
     
     public function getNomEs(){
-        return $this->nom_es;
+        return $this->nomEs;
     }
     
     public function setNomEs($nom_es){
-        $this->nom_es = $nom_es;
+        $this->nomEs = $nom_es;
     }
     
     public function getDescripcioCa(){
-        return $this->descripcio_ca;
+        return $this->descripcioCa;
     }
     
     public function setDescripcioCa($descripcio_ca){
-        $this->descripcio_ca = $descripcio_ca;
+        $this->descripcioCa = $descripcio_ca;
     }
     
     public function getDescripcioEs(){
-        return $this->descripcio_es;
+        return $this->descripcioEs;
     }
     
     public function setDescripcioEs($descripcio_es){
-        $this->descripcio_es = $descripcio_es;
+        $this->descripcioEs = $descripcio_es;
     }
     
     public function getPreu(){
@@ -148,11 +148,11 @@ class Producte
     }
     
     public function getLinkCompra(){
-        return $this->link_compra;
+        return $this->linkCompra;
     }
     
     public function setLinkCompra($link_compra){
-        $this->link_compra = $link_compra;
+        $this->linkCompra = $link_compra;
     }
     
     public function getVenut(){
@@ -164,91 +164,91 @@ class Producte
     }
     
     public function getRutaImatgeA(){
-        return $this->ruta_imatge_a;
+        return $this->rutaImatgeA;
     }
     
     public function setRutaImatgeA($ruta_imatge_a){
-        $this->ruta_imatge_a = $ruta_imatge_a;
+        $this->rutaImatgeA = $ruta_imatge_a;
     }
     
     public function getRutaImatgeB(){
-        return $this->ruta_imatge_b;
+        return $this->rutaImatgeB;
     }
     
     public function setRutaImatgeB($ruta_imatge_b){
-        $this->ruta_imatge_b = $ruta_imatge_b;
+        $this->rutaImatgeB = $ruta_imatge_b;
     }
     
     public function getRutaImatgeC(){
-        return $this->ruta_imatge_c;
+        return $this->rutaImatgeC;
     }
     
     public function setRutaImatgeC($ruta_imatge_c){
-        $this->ruta_imatge_c = $ruta_imatge_c;
+        $this->rutaImatgeC = $ruta_imatge_c;
     }
     
     public function getRutaImatgeD(){
-        return $this->ruta_imatge_d;
+        return $this->rutaImatgeD;
     }
     
     public function setRutaImatgeD($ruta_imatge_d){
-        $this->ruta_imatge_d = $ruta_imatge_d;
+        $this->rutaImatgeD = $ruta_imatge_d;
     }
     
     /**
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $imatgeA
      */
     public function setImatgeA(UploadedFile $imatgeA = null) {
-        $this->imatge_a = $imatgeA;
+        $this->imatgeA = $imatgeA;
     }
 
     /**
      * @return UploadedFile
      */
     public function getImatgeA() {
-        return $this->imatge_a;
+        return $this->imatgeA;
     }
     
     /**
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $imatgeB
      */
     public function setImatgeB(UploadedFile $imatgeB = null) {
-        $this->imatge_b = $imatgeB;
+        $this->imatgeB = $imatgeB;
     }
 
     /**
      * @return UploadedFile
      */
     public function getImatgeB() {
-        return $this->imatge_b;
+        return $this->imatgeB;
     }
     
     /**
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $imatgeC
      */
     public function setImatgeC(UploadedFile $imatgeC = null) {
-        $this->imatge_c = $imatgeC;
+        $this->imatgeC = $imatgeC;
     }
 
     /**
      * @return UploadedFile
      */
     public function getImatgeC() {
-        return $this->imatge_c;
+        return $this->imatgeC;
     }
     
     /**
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $imatgeD
      */
     public function setImatgeD(UploadedFile $imatgeD = null) {
-        $this->imatge_d = $imatgeD;
+        $this->imatgeD = $imatgeD;
     }
 
     /**
      * @return UploadedFile
      */
     public function getImatgeD() {
-        return $this->imatge_d;
+        return $this->imatgeD;
     }
     
     public function getSlug() {
@@ -257,41 +257,41 @@ class Producte
     
     public function getColleccioCa()
     {
-        return $this->colleccio_ca;
+        return $this->colleccioCa;
     }
 
     public function setColleccioCa($colleccio_ca)
     {
-        $this->colleccio_ca = $colleccio_ca;
+        $this->colleccioCa = $colleccio_ca;
     }
     
     public function getColleccioEs()
     {
-        return $this->colleccio_es;
+        return $this->colleccioEs;
     }
 
     public function setColleccioEs($colleccio_es)
     {
-        $this->colleccio_es = $colleccio_es;
+        $this->colleccioEs = $colleccio_es;
     }
     
     public function getTagCa()
     {
-        return $this->tag_ca;
+        return $this->tagCa;
     }
 
     public function setTagCa($tag_ca)
     {
-        $this->tag_ca = $tag_ca;
+        $this->tagCa = $tag_ca;
     }
     
     public function getTagEs()
     {
-        return $this->tag_es;
+        return $this->tagEs;
     }
 
     public function setTagEs($tag_es)
     {
-        $this->tag_es = $tag_es;
+        $this->tagEs = $tag_es;
     }
 }

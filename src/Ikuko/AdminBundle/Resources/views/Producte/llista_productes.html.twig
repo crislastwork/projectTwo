@@ -35,12 +35,24 @@
         <td>{{ producte.preu }}</td>
         <td>{{ producte.talles }}</td>
         <td>{{ producte.venut ? 'sí' : 'no' }}</td>
-        <td><a href={{ path('ikuko_admin_edita_producte', {'producte': producte.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_producte', {'id_producte': producte.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_producte', {'producte': producte.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_producte', {'id_producte': producte.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar el producte?');
+    });
+    
+</script>
 
 {% endblock %}

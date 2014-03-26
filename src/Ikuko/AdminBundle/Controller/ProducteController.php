@@ -65,11 +65,11 @@ class ProducteController extends Controller {
         ));
     }
 
-    public function editaProducteAction(Request $request, $producte) {
+    public function editaProducteAction(Request $request, $id_producte) {
 
         $em = $this->getDoctrine()->getManager();
         $producte = $em->getRepository('IkukoIkukoBundle:Producte')
-                ->findOneBy(array('id' => $producte));
+                ->findOneBy(array('id' => $id_producte));
 
         $form = $this->createForm(new NouProducteTypeForm(), $producte);
 
@@ -118,13 +118,13 @@ class ProducteController extends Controller {
         ));
     }
 
-    public function eliminaProducteAction($producte) {
+    public function eliminaProducteAction($id_producte) {
         $em = $this->getDoctrine()->getManager();
         $producte = $em->getRepository('IkukoIkukoBundle:Producte')
-                ->findOneBy(array('id' => $producte));
+                ->findOneBy(array('id' => $id_producte));
 
-        if (!$producte) {
-            throw $this->createNotFoundException('No s\'ha trobat cap producte amb id: ' . $producte);
+        if (!$id_producte) {
+            throw $this->createNotFoundException('No s\'ha trobat cap producte amb id: ' . $id_producte);
         }
         $em->remove($producte);
         $em->flush();

@@ -23,12 +23,24 @@
         <td>{{ slider.nom }}</td>
         <td>{{ slider.textCa }}</td>
         <td>{{ slider.textEs }}</td>
-        <td><a href={{ path('ikuko_admin_edita_slider', {'slider': slider.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_slider', {'id_slider': slider.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_slider', {'slider': slider.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_slider', {'id_slider': slider.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar el slider?');
+    });
+    
+</script>
 
 {% endblock %}

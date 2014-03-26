@@ -19,28 +19,28 @@ class Categoria
     protected $id;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $titol_ca;
+    protected $titolCa;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $titol_es;
+    protected $titolEs;
     
     /** @ORM\Column(type="string", length=30)*/
     protected $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Blog", mappedBy="categoria_ca")
+     * @ORM\OneToMany(targetEntity="Blog", mappedBy="categoriaCa")
      */
-    protected $blogs_ca;
+    protected $blogsCa;
     
     /**
-     * @ORM\OneToMany(targetEntity="Blog", mappedBy="categoria_es")
+     * @ORM\OneToMany(targetEntity="Blog", mappedBy="categoriaEs")
      */
-    protected $blogs_es;
+    protected $blogsEs;
     
     
     public function __construct() {
-        $this->blogs_ca = new ArrayCollection();
-        $this->blogs_es = new ArrayCollection();
+        $this->blogsCa = new ArrayCollection();
+        $this->blogsEs = new ArrayCollection();
     }
     
     public function getId(){
@@ -48,20 +48,20 @@ class Categoria
     }
     
     public function getTitolCa(){
-        return $this->titol_ca;
+        return $this->titolCa;
     }
     
     public function setTitolCa($titol_ca){
-        $this->titol_ca = $titol_ca;
+        $this->titolCa = $titol_ca;
         $this->slug = Util::getSlug($titol_ca);
     }
     
     public function getTitolEs(){
-        return $this->titol_es;
+        return $this->titolEs;
     }
     
     public function setTitolEs($titol_es){
-        $this->titol_es = $titol_es;
+        $this->titolEs = $titol_es;
     }
         
     public function getSlug(){
@@ -70,26 +70,85 @@ class Categoria
     
     public function getBlogsCa()
     {
-        return $this->blogs_ca;
+        return $this->blogsCa;
     }
 
     public function setBlogsCa(ArrayCollection $blogs_ca)
     {
-        $this->blogs_ca = $blogs_ca;
+        $this->blogsCa = $blogs_ca;
     }
     
     public function getBlogsEs()
     {
-        return $this->blogs_es;
+        return $this->blogsEs;
     }
 
     public function setBlogsEs(ArrayCollection $blogs_es)
     {
-        $this->blogs_es = $blogs_es;
+        $this->blogsEs = $blogs_es;
     }
     
     public function __toString()
     {
         return $this->getTitolCa();
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Categoria
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Add blogsCa
+     *
+     * @param \Ikuko\BlogBundle\Entity\Blog $blogsCa
+     * @return Categoria
+     */
+    public function addBlogsCa(\Ikuko\BlogBundle\Entity\Blog $blogsCa)
+    {
+        $this->blogsCa[] = $blogsCa;
+
+        return $this;
+    }
+
+    /**
+     * Remove blogsCa
+     *
+     * @param \Ikuko\BlogBundle\Entity\Blog $blogsCa
+     */
+    public function removeBlogsCa(\Ikuko\BlogBundle\Entity\Blog $blogsCa)
+    {
+        $this->blogsCa->removeElement($blogsCa);
+    }
+
+    /**
+     * Add blogsEs
+     *
+     * @param \Ikuko\BlogBundle\Entity\Blog $blogsEs
+     * @return Categoria
+     */
+    public function addBlogsE(\Ikuko\BlogBundle\Entity\Blog $blogsEs)
+    {
+        $this->blogsEs[] = $blogsEs;
+
+        return $this;
+    }
+
+    /**
+     * Remove blogsEs
+     *
+     * @param \Ikuko\BlogBundle\Entity\Blog $blogsEs
+     */
+    public function removeBlogsE(\Ikuko\BlogBundle\Entity\Blog $blogsEs)
+    {
+        $this->blogsEs->removeElement($blogsEs);
     }
 }

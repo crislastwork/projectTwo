@@ -20,34 +20,24 @@ class Comentari
     protected $usuari;
 
     /** @ORM\Column(type="text") */
-    protected $comentari_ca;
-    
-    /** @ORM\Column(type="text") */
-    protected $comentari_es;
+    protected $comentari;
 
     /** @ORM\Column(type="boolean") */
     protected $aprovat;
     
     /** @ORM\Column(type="datetime") */
-    protected $data_publicacio;
+    protected $dataPublicacio;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Blog", inversedBy="comentaris_ca")
-     * @ORM\JoinColumn(name="blog_ca_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Blog", inversedBy="comentaris")
+     * @ORM\JoinColumn(name="blogCaId", referencedColumnName="id")
      */
-    protected $blog_ca;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Blog", inversedBy="comentaris_es")
-     * @ORM\JoinColumn(name="blog_es_id", referencedColumnName="id")
-     */
-    protected $blog_es;
+    protected $blogCa;
 
     
     public function __construct()
     {
         $this->setDataPublicacio(new \DateTime());
-
         $this->setAprovat(true);
     }
 
@@ -66,24 +56,14 @@ class Comentari
         $this->usuari = $usuari;
     }
 
-    public function getComentariCa()
+    public function getComentari()
     {
-        return $this->comentari_ca;
+        return $this->comentari;
     }
 
-    public function setComentariCa($comentari_ca)
+    public function setComentari($comentari)
     {
-        $this->comentari_ca = $comentari_ca;
-    }
-    
-    public function getComentariEs()
-    {
-        return $this->comentari_es;
-    }
-
-    public function setComentariEs($comentari_es)
-    {
-        $this->comentari_es = $comentari_es;
+        $this->comentari = $comentari;
     }
     
     public function getAprovat()
@@ -98,32 +78,22 @@ class Comentari
 
     public function getDataPublicacio()
     {
-        return $this->data_publicacio;
+        return $this->dataPublicacio;
     }
     
     public function setDataPublicacio($dataPublicacio)
     {
-        $this->data_publicacio = $dataPublicacio;
+        $this->dataPublicacio = $dataPublicacio;
     }
 
     public function getBlogCa()
     {
-        return $this->blog_ca;
+        return $this->blogCa;
     }
     
-    public function setBlogCa(\Ikuko\BlogBundle\Entity\Blog $blogCa = null)
+    public function setBlogCa($blogCa)
     {
-        $this->blog_ca = $blogCa;
-    }
-    
-    public function getBlogEs()
-    {
-        return $this->blog_es;
-    }
-    
-    public function setBlogEs(\Ikuko\BlogBundle\Entity\Blog $blogEs = null)
-    {
-        $this->blog_es = $blogEs;
+        $this->blogCa = $blogCa;
     }
     
 }

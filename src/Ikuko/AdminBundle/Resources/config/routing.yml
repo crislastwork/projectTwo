@@ -23,13 +23,13 @@ ikuko_admin_nou_slider:
         _method:  GET|POST
 
 ikuko_admin_edita_slider:
-    pattern:  /secured/edita_slider-{slider}
+    pattern:  /secured/edita_slider-{id_slider}
     defaults: { _controller: IkukoAdminBundle:Slider:editaSlider }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_slider:
-    pattern:  /secured/elimina_slider-{slider}
+    pattern:  /secured/elimina_slider-{id_slider}
     defaults: { _controller: IkukoAdminBundle:Slider:eliminaSlider }
     requirements:
         _method:  GET
@@ -45,13 +45,13 @@ ikuko_admin_nova_colleccio:
         _method:  GET|POST
 
 ikuko_admin_edita_colleccio:
-    pattern:  /secured/edita_colleccio-{colleccio}
+    pattern:  /secured/edita_colleccio-{id_colleccio}
     defaults: { _controller: IkukoAdminBundle:Colleccio:editaColleccio }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_colleccio:
-    pattern:  /secured/elimina_colleccio-{colleccio}
+    pattern:  /secured/elimina_colleccio-{id_colleccio}
     defaults: { _controller: IkukoAdminBundle:Colleccio:eliminaColleccio }
     requirements:
         _method:  GET
@@ -67,13 +67,13 @@ ikuko_admin_nou_producte:
         _method:  GET|POST
 
 ikuko_admin_edita_producte:
-    pattern:  /secured/edita_producte-{producte}
+    pattern:  /secured/edita_producte-{id_producte}
     defaults: { _controller: IkukoAdminBundle:Producte:editaProducte }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_producte:
-    pattern:  /secured/elimina_producte-{producte}
+    pattern:  /secured/elimina_producte-{id_producte}
     defaults: { _controller: IkukoAdminBundle:Producte:eliminaProducte }
     requirements:
         _method:  GET
@@ -89,13 +89,13 @@ ikuko_admin_nou_tag:
         _method:  GET|POST
 
 ikuko_admin_edita_tag:
-    pattern:  /secured/edita_tag-{tag}
+    pattern:  /secured/edita_tag-{id_tag}
     defaults: { _controller: IkukoAdminBundle:Tag:editaTag }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_tag:
-    pattern:  /secured/elimina_tag-{tag}
+    pattern:  /secured/elimina_tag-{id_tag}
     defaults: { _controller: IkukoAdminBundle:Tag:eliminaTag }
     requirements:
         _method:  GET
@@ -111,13 +111,13 @@ ikuko_admin_nou_blog:
         _method:  GET|POST
 
 ikuko_admin_edita_blog:
-    pattern:  /secured/edita_blog-{blog}
+    pattern:  /secured/edita_blog-{id_blog}
     defaults: { _controller: IkukoAdminBundle:Blog:editaBlog }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_blog:
-    pattern:  /secured/elimina_blog-{blog}
+    pattern:  /secured/elimina_blog-{id_blog}
     defaults: { _controller: IkukoAdminBundle:Blog:eliminaBlog }
     requirements:
         _method:  GET
@@ -133,13 +133,13 @@ ikuko_admin_nova_categoria:
         _method:  GET|POST
 
 ikuko_admin_edita_categoria:
-    pattern:  /secured/edita_categoria-{categoria}
+    pattern:  /secured/edita_categoria-{id_categoria}
     defaults: { _controller: IkukoAdminBundle:Categoria:editaCategoria }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_categoria:
-    pattern:  /secured/elimina_categoria-{categoria}
+    pattern:  /secured/elimina_categoria-{id_categoria}
     defaults: { _controller: IkukoAdminBundle:Categoria:eliminaCategoria }
     requirements:
         _method:  GET
@@ -155,7 +155,7 @@ ikuko_admin_nova_imatge:
         _method:  GET|POST
 
 ikuko_admin_elimina_imatge:
-    pattern:  /secured/elimina_imatge-{imatge}
+    pattern:  /secured/elimina_imatge-{id_imatge}
     defaults: { _controller: IkukoAdminBundle:Imatge:eliminaImatge }
     requirements:
         _method:  GET
@@ -171,23 +171,23 @@ ikuko_admin_nou_lloc:
         _method:  GET|POST
 
 ikuko_admin_edita_lloc:
-    pattern:  /secured/edita_lloc-{lloc}
+    pattern:  /secured/edita_lloc-{id_lloc}
     defaults: { _controller: IkukoAdminBundle:Lloc:editaLloc }
     requirements:
         _method:  GET|POST
 
 ikuko_admin_elimina_lloc:
-    pattern:  /secured/elimina_lloc-{lloc}
+    pattern:  /secured/elimina_lloc-{id_lloc}
     defaults: { _controller: IkukoAdminBundle:Lloc:eliminaLloc }
     requirements:
         _method:  GET
 
 ikuko_admin_comentaris:
     pattern:  /secured/comentaris
-    defaults: { _controller: IkukoAdminBundle:Comentari:llistaComentari }
+    defaults: { _controller: IkukoAdminBundle:Comentari:llistaComentaris }
 
 ikuko_admin_elimina_comentari:
-    pattern:  /secured/elimina_comentari-{comentari}
+    pattern:  /secured/elimina_comentari-{id_comentari}
     defaults: { _controller: IkukoAdminBundle:Comentari:eliminaComentari }
     requirements:
         _method:  GET

@@ -56,11 +56,11 @@ class BlogController extends Controller {
         ));
     }
 
-    public function editaBlogAction(Request $request, $blog) {
+    public function editaBlogAction(Request $request, $id_blog) {
 
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository('IkukoBlogBundle:Blog')
-                ->findOneBy(array('id' => $blog));
+                ->findOneBy(array('id' => $id_blog));
 
         $form = $this->createForm(new NouBlogTypeForm(), $blog);
 
@@ -91,20 +91,20 @@ class BlogController extends Controller {
         ));
     }
 
-    public function eliminaBlogAction($blog) {
+    public function eliminaBlogAction($id_blog) {
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository('IkukoBlogBundle:Blog')
-                ->findOneBy(array('id' => $blog));
+                ->findOneBy(array('id' => $id_blog));
 
-        if (!$blog) {
-            throw $this->createNotFoundException('No s\'ha trobat cap blog amb id: ' . $blog);
+        if (!$id_blog) {
+            throw $this->createNotFoundException('No s\'ha trobat cap blog amb id: ' . $id_blog);
         }
         $em->remove($blog);
         $em->flush();
 
         $this->get('session')->getFlashBag()->add('notice', 'Blog eliminat amb èxit!');
 
-        return $this->forward('IkukoAdminBundle:Blog:llistaBlog');
+        return $this->forward('IkukoAdminBundle:Blog:llistaBlogs');
     }
 
 }

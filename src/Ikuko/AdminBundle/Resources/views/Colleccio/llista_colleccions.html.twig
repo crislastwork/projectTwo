@@ -23,12 +23,24 @@
         <td>{{ colleccio.titolCa }}</td>
         <td>{{ colleccio.titolEs }}</td>
         <td>{{ colleccio.nomImatge }}</td>
-        <td><a href={{ path('ikuko_admin_edita_colleccio', {'colleccio': colleccio.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_colleccio', {'id_colleccio': colleccio.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_colleccio', {'colleccio': colleccio.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_colleccio', {'id_colleccio': colleccio.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar la col.lecció?');
+    });
+    
+</script>
 
 {% endblock %}

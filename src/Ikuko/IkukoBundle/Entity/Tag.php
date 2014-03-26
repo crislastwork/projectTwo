@@ -18,28 +18,28 @@ class Tag
     protected $id;
     
     /** @ORM\Column(type="string", length=100)*/
-    protected $tag_ca;
+    protected $tagCa;
     
     /** @ORM\Column(type="string", length=100)*/
-    protected $tag_es;
+    protected $tagEs;
     
     /** @ORM\Column(type="string", length=100)*/
     protected $slug;
     
     /**
-     * @ORM\OneToMany(targetEntity="Producte", mappedBy="tag_ca")
+     * @ORM\OneToMany(targetEntity="Producte", mappedBy="tagCa")
      */
-    protected $productes_ca;
+    protected $productesCa;
     
     /**
-     * @ORM\OneToMany(targetEntity="Producte", mappedBy="tag_es")
+     * @ORM\OneToMany(targetEntity="Producte", mappedBy="tagEs")
      */
-    protected $productes_es;
+    protected $productesEs;
     
     
     public function __construct() {
-        $this->productes_ca = new ArrayCollection();
-        $this->productes_es = new ArrayCollection();
+        $this->productesCa = new ArrayCollection();
+        $this->productesEs = new ArrayCollection();
     }
     
     public function getId(){
@@ -47,20 +47,20 @@ class Tag
     }
     
     public function getTagCa(){
-        return $this->tag_ca;
+        return $this->tagCa;
     }
     
     public function setTagCa($tag_ca){
-        $this->tag_ca = $tag_ca;
+        $this->tagCa = $tag_ca;
         $this->slug = Util::getSlug($tag_ca);
     }
     
     public function getTagEs(){
-        return $this->tag_es;
+        return $this->tagEs;
     }
     
     public function setTagEs($tag_es){
-        $this->tag_es = $tag_es;
+        $this->tagEs = $tag_es;
     }
     
     public function getSlug(){
@@ -69,22 +69,22 @@ class Tag
     
     public function getProductesCa()
     {
-        return $this->productes_ca;
+        return $this->productesCa;
     }
 
     public function setProductesCa(ArrayCollection $productes_ca)
     {
-        $this->productes_ca = $productes_ca;
+        $this->productesCa = $productes_ca;
     }
     
     public function getProductesEs()
     {
-        return $this->productes_es;
+        return $this->productesEs;
     }
 
     public function setProductesEs(ArrayCollection $productes_es)
     {
-        $this->productes_es = $productes_es;
+        $this->productesEs = $productes_es;
     }
     
     public function __toString()

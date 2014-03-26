@@ -1,0 +1,49 @@
+{% set locale = app.request.locale %}
+
+    
+{% if locale == 'ca' %}
+    
+    <select id="categoriaseleccionada">
+        <option value="">{{ 'escull una categoria' | trans }}</option>
+    {% for categoria in categories %}
+        <option value="{{ categoria.titolCa }}" 
+                data-url="{{ url('ikuko_blog_categoria', {'id': categoria.id, 'slug': categoria.slug}) }}">
+            {{ categoria.titolCa }}
+        </option>
+    {% endfor %}
+    </select>
+    
+    {% for lloc in llocs %}
+    <ul>
+        <li><a href="{{ lloc.link }}">{{ lloc.nomCa }}</a></li>
+    </ul>
+    {% endfor %}
+
+{% elseif locale == 'es' %}
+    
+    <select id="categoriaseleccionada">
+        <option value="">{{ 'escull una categoria' | trans }}</option>
+    {% for categoria in categories %}
+        <option value="{{ categoria.titolCa }}" 
+                data-url="{{ url('ikuko_blog_categoria', {'id': categoria.id, 'slug': categoria.slug}) }}">
+            {{ categoria.titolEs }}
+        </option>
+    {% endfor %}
+    </select>
+    
+    {% for lloc in llocs %}
+    <ul>
+        <li><a href="{{ lloc.link }}">{{ lloc.nomEs }}</a></li>
+    </ul>
+    {% endfor %}
+
+{% endif %}
+
+<script type="text/javascript">
+    var lista = document.getElementById('categoriaseleccionada');
+            
+    lista.onchange = function(){
+        var url = lista.options[lista.selectedIndex].getAttribute('data-url');
+        window.location = url;
+    };
+</script>

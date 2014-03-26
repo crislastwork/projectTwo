@@ -1,0 +1,13 @@
+{% if comentaris.getTotalItemCount == 0 %}
+    <p>{{ 'sense comentaris' | trans }}</p>
+{% else %}
+    <h2>{{ comentaris.getTotalItemCount }} {{ 'comentari' | trans }}{% if comentaris.getTotalItemCount != 1 %}s{% endif %}</h2>
+{% endif %}
+    
+{% for comentari in comentaris %}
+
+<p><span>{{ comentari.usuari }}:</span> {{ comentari.dataPublicacio|date('d-m-Y') }}</p>
+        <p>{{ comentari.comentari }}</p>
+
+{% endfor %}
+{{ knp_pagination_render(comentaris) }}

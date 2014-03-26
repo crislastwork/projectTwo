@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="ca" datatype="plaintext" original="file.ext">
+        <body>           
+            <trans-unit id="1">
+                <source>El missatge hauria de ser més llarg!</source>
+                <target>El missatge hauria de ser més llarg!</target>
+            </trans-unit>
+            
+            <trans-unit id="36">
+                <source>about cris</source>
+                <target>
+<![CDATA[ Cristina Alemany ha estat la darrera incorporació d'Alexmany. Va estudiar 
+Sistemes de Informació Geogràfica (2010, UdG) i va evolucionar fins a 
+convertir-se en programadora PHP. A Alexmany s''encarrega del desenvolupament i 
+manteniment de sistemes de base de dades i aplicacions web PHP. ]]></target>
+            </trans-unit>
+             
+            
+        </body>
+    </file>
+</xliff>

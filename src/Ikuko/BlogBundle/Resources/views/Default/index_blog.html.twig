@@ -1,0 +1,57 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<div id="head"></div>
+
+{% block sidebar %}
+    {% render controller("IkukoBlogBundle:Default:blogSidebar") %}
+{% endblock %}
+
+<div id="indexblogs">
+    <div id="newstitle"><strong>{{ 'ultimes noticies' | trans | upper }}</strong></div>
+<div id="co">
+
+<div class="contentnot">
+{% if locale == 'ca' %}
+    {% for blog in pagination %}
+        <div class="item masonry-brick">
+            <img src="{{ asset(directori_imatges ~ blog.rutaImatge) }}" width="299px"/>
+            <a href="{{ path('ikuko_blog_detall', {'id': blog.id, 'slug': blog.slug}) }}"><h5>{{ blog.titolCa }}</h5></a>
+            <p>{{ blog.blogCa|length > 500           ? 
+                               blog.blogCa|slice(0, 500)~ '...'   : 
+                               blog.blogCa}}</p>
+        </div>
+    {% endfor %}
+{% elseif locale == 'es' %}
+    {% for blog in pagination %}
+        <div class="item masonry-brick">
+            <img src="{{ asset(directori_imatges ~ blog.rutaImatge) }}" width="299px"/>
+            <a href="{{ path('ikuko_blog_detall', {'id': blog.id, 'slug': blog.slug}) }}"><h5>{{ blog.titolEs }}</h5></a>
+            <p>{{ blog.blogEs|length > 500           ? 
+                               blog.blogEs|slice(0, 500)~ '...'   : 
+                               blog.blogEs}}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+</div>
+    </div>
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% block scriptslider %}
+<script>
+    //masonry
+    $(window).load(function() {
+        $('#co').masonry({
+            // options
+            itemSelector: '.item'
+        });
+
+    });
+</script>
+{% endblock %}
+
+{% endblock %}

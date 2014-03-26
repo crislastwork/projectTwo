@@ -32,6 +32,91 @@
                 <target>últimes notícies</target>
             </trans-unit> 
             
+            <trans-unit id="7">
+                <source>ultimes col.leccions</source>
+                <target>últimes col.leccions</target>
+            </trans-unit> 
+            
+            <trans-unit id="8">
+                <source>Disposem de</source>
+                <target>Disposem de</target>
+            </trans-unit>
+            
+             <trans-unit id="9">
+                <source>productes per la col.lecció</source>
+                <target>productes per la col.lecció</target>
+            </trans-unit>  
+             
+            <trans-unit id="10">
+                <source>Missatge enviat correctament. Gràcies!</source>
+                <target>Missatge enviat correctament. Gràcies!</target>
+            </trans-unit>  
+            
+            <trans-unit id="11">
+                <source>nom</source>
+                <target>Nom</target>
+            </trans-unit> 
+             
+            <trans-unit id="12">
+                <source>email</source>
+                <target>Email</target>
+            </trans-unit>  
+            
+            <trans-unit id="13">
+                <source>assumpte</source>
+                <target>Assumpte</target>
+            </trans-unit>
+            
+            <trans-unit id="14">
+                <source>missatge</source>
+                <target>Missatge</target>
+            </trans-unit>
+            
+            <trans-unit id="15">
+                <source>posts de la categoria</source>
+                <target>Posts de la categoria</target>
+            </trans-unit>
+            
+            <trans-unit id="16">
+                <source>data publicacio</source>
+                <target>Data de publicació</target>
+            </trans-unit>
+            
+            <trans-unit id="17">
+                <source>comentaris</source>
+                <target>Comentaris</target>
+            </trans-unit>
+            
+            <trans-unit id="18">
+                <source>afegeix un comentari</source>
+                <target>Afageix un comentari</target>
+            </trans-unit>
+            
+            <trans-unit id="19">
+                <source>escull una categoria</source>
+                <target>Escull una categoria</target>
+            </trans-unit>
+            
+            <trans-unit id="20">
+                <source>sense comentaris</source>
+                <target>No hi ha comentaris per aquest post. Sigues el primer en comentar...</target>
+            </trans-unit>
+            
+            <trans-unit id="21">
+                <source>usuari</source>
+                <target>Usuari</target>
+            </trans-unit>
+            
+            <trans-unit id="22">
+                <source>comentari</source>
+                <target>Comentari</target>
+            </trans-unit>
+            
+            <trans-unit id="23">
+                <source>carregant comentaris</source>
+                <target>Carregant comentaris</target>
+            </trans-unit>
+            
             <trans-unit id="36">
                 <source>about cris</source>
                 <target>

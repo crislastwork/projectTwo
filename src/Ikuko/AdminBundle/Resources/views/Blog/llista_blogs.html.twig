@@ -32,12 +32,25 @@
         <td>{{ blog.autor }}</td>
         <td>{{ blog.dataPublicacio|date('Y-m-d') }}</td>
 
-        <td><a href={{ path('ikuko_admin_edita_blog', {'blog': blog.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_blog', {'id_blog': blog.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_blog', {'blog': blog.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_blog', {'id_blog': blog.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar el post?');
+    });
+    
+</script>
+
 
 {% endblock %}

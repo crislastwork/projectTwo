@@ -1,0 +1,86 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+
+<div id="head"></div>
+{% set locale = app.request.locale %}
+
+{% if locale == 'ca' %}
+
+<div class="count">
+    {{ 'Disposem de' | trans }} {{ pagination.getTotalItemCount }} {{ 'productes per la col.lecció' | trans }} {{ colleccio[0].ColleccioCa.titolCa }}!
+</div>
+
+    <ul>
+    {% for tag in tags %}
+        <li><h3><a href="{{ path('ikuko_productes_tag', {'slug':  colleccio[0].colleccioCa.slug, 'id': colleccio[0].colleccioCa.id, 'tag': tag.id }) }}">
+        {{ tag.tagCa }}</a></h3></li>
+    {% endfor %}
+    </ul>
+
+<h1>{{ colleccio[0].ColleccioCa.titolCa }}</h1>
+
+<img src="{{ asset(directori_imatges ~ colleccio[0].ColleccioCa.rutaImatge) }}" width="500">
+
+    {% for producte in pagination %} 
+        <h2>{{ producte.nomCa }}</h2>
+        <h3>{{ producte.tagCa }}</h3>
+        <p>{{ producte.descripcioCa }}</p>
+        {{ producte.preu }}<br>
+        {{ producte.talles }}<br>
+        {{ producte.linkCompra }}<br>
+        {% if producte.venut == true %}
+            {{ 'VENUT!' }}<br>
+        {% else %}
+            {{ 'PRODUCTE DISPONIBLE!' }}<br>
+        {% endif %}
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeA) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeB) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeC) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeD) }}" width="200">
+    {% endfor %}
+        
+{% elseif locale == 'es' %}
+
+<div class="count">
+    {{ 'Disposem de' | trans }} {{ pagination.getTotalItemCount }} {{ 'productes per la col.lecció' | trans }} {{ colleccio[0].ColleccioEs.titolEs }}!
+</div>
+        
+    <ul>
+    {% for tag in tags %}
+        <li><h3><a href="{{ path('ikuko_productes_tag', {'slug':  colleccio[0].colleccioEs.slug, 'id': colleccio[0].colleccioEs.id, 'tag': tag.id }) }}">
+        {{ tag.tagEs }}</a></h3></li>
+    {% endfor %}
+    </ul>
+        
+<h1>{{ colleccio[0].ColleccioEs.titolEs }}</h1>
+
+<img src="{{ asset(directori_imatges ~ colleccio[0].ColleccioEs.rutaImatge) }}" width="500">
+
+    {% for producte in pagination %} 
+        <h2>{{ producte.nomEs }}</h2>
+        <h3>{{ producte.tagEs }}</h3>
+        <p>{{ producte.descripcioEs }}</p>
+        {{ producte.preu }}<br>
+        {{ producte.talles }}<br>
+        {{ producte.linkCompra }}<br>
+        {% if producte.venut == true %}
+            {{ 'VENDIDO!' }}<br>
+        {% else %}
+            {{ 'PRODUCTO DISPONIBLE!' }}<br>
+        {% endif %}
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeA) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeB) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeC) }}" width="200">
+        <img src="{{ asset(directori_imatges ~ producte.rutaImatgeD) }}" width="200">
+    {% endfor %}
+{% endif %}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+{% block javascript %}
+{% endblock %}
+
+{% endblock %}

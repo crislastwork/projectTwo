@@ -39,11 +39,11 @@ class CategoriaController extends Controller {
         ));
     }
 
-    public function editaCategoriaAction(Request $request, $categoria) {
+    public function editaCategoriaAction(Request $request, $id_categoria) {
 
         $em = $this->getDoctrine()->getManager();
         $categoria = $em->getRepository('IkukoBlogBundle:Categoria')
-                ->findOneBy(array('id' => $categoria));
+                ->findOneBy(array('id' => $id_categoria));
 
         $form = $this->createForm(new NovaCategoriaTypeForm(), $categoria);
 
@@ -66,19 +66,24 @@ class CategoriaController extends Controller {
         ));
     }
 
-    public function eliminaCategoriaAction($categoria) {
+    public function eliminaCategoriaAction($id_categoria) {
         $em = $this->getDoctrine()->getManager();
         $categoria = $em->getRepository('IkukoBlogBundle:Categoria')
-                ->findOneBy(array('id' => $categoria));
+                ->findOneBy(array('id' => $id_categoria));
 
-        if (!$categoria) {
-            throw $this->createNotFoundException('No s\'ha trobat cap categoria amb id: ' . $categoria);
+        if (!$id_categoria) {
+            throw $this->createNotFoundException('No s\'ha trobat cap categoria amb id: ' . $id_categoria);
         }
-        $em->remove($categoria);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add('notice', 'Categoria eliminada amb èxit!');
-
+   
+        try{
+            $em->remove($categoria);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('notice', 'Categoria eliminada amb èxit!');
+        } catch (\Doctrine\DBAL\DBALException $e) {
+            
+            $this->get('session')->getFlashBag()->add('notice', 'IMPOSSIBLE ELIMINAR LA CATEGORIA!');
+        }
+        
         return $this->forward('IkukoAdminBundle:Categoria:llistaCategories');
     }
 

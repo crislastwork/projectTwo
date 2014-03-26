@@ -19,12 +19,24 @@
     <tr>
         <td>{{ categoria.titolCa }}</td>
         <td>{{ categoria.titolEs }}</td>
-        <td><a href={{ path('ikuko_admin_edita_categoria', {'categoria': categoria.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_categoria', {'id_categoria': categoria.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_categoria', {'categoria': categoria.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_categoria', {'id_categoria': categoria.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar la categoria?');
+    });
+    
+</script>
 
 {% endblock %}

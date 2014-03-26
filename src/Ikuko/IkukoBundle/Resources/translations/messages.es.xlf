@@ -30,7 +30,92 @@
               <trans-unit id="6">
                 <source>ultimes noticies</source>
                 <target>últimas noticias</target>
+            </trans-unit>
+            
+              <trans-unit id="7">
+                <source>ultimes col.leccions</source>
+                <target>últimas colecciones</target>
+            </trans-unit>
+            
+              <trans-unit id="8">
+                <source>Disposem de</source>
+                <target>Disponemos de</target>
+            </trans-unit>
+            
+             <trans-unit id="9">
+                <source>productes per la col.lecció</source>
+                <target>productos para la colección</target>
+            </trans-unit>   
+            
+            <trans-unit id="10">
+                <source>Missatge enviat correctament. Gràcies!</source>
+                <target>Mensaje enviado correctamente. Gracias!</target>
+            </trans-unit>
+            
+            <trans-unit id="11">
+                <source>nom</source>
+                <target>Nombre</target>
+            </trans-unit> 
+             
+            <trans-unit id="12">
+                <source>email</source>
+                <target>Email</target>
             </trans-unit>  
+            
+            <trans-unit id="13">
+                <source>assumpte</source>
+                <target>Asunto</target>
+            </trans-unit>
+            
+            <trans-unit id="14">
+                <source>missatge</source>
+                <target>Mensaje</target>
+            </trans-unit>
+            
+            <trans-unit id="15">
+                <source>posts de la categoria</source>
+                <target>Posts de la categoría</target>
+            </trans-unit>
+            
+            <trans-unit id="16">
+                <source>data publicacio</source>
+                <target>Fecha de publicación</target>
+            </trans-unit>
+            
+            <trans-unit id="17">
+                <source>comentaris</source>
+                <target>Comentarios</target>
+            </trans-unit>
+            
+            <trans-unit id="18">
+                <source>afegeix un comentari</source>
+                <target>Añade un comentario</target>
+            </trans-unit>
+            
+            <trans-unit id="19">
+                <source>escull una categoria</source>
+                <target>Escoge una categoría</target>
+            </trans-unit>
+            
+            <trans-unit id="20">
+                <source>sense comentaris</source>
+                <target>No hay comentarios para este post. Sé el primero en comentar...</target>
+            </trans-unit>
+            
+            <trans-unit id="21">
+                <source>usuari</source>
+                <target>Usuario</target>
+            </trans-unit>
+            
+            <trans-unit id="22">
+                <source>comentari</source>
+                <target>Comentario</target>
+            </trans-unit>
+            
+            <trans-unit id="23">
+                <source>carregant comentaris</source>
+                <target>Cargando comentarios</target>
+            </trans-unit>
             
         </body>
     </file>

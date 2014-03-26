@@ -23,54 +23,51 @@ class Blog {
     protected $id;
 
     /** @ORM\Column(type="string", length=100) */
-    protected $titol_ca;
+    protected $titolCa;
     
     /** @ORM\Column(type="string", length=100) */
-    protected $titol_es;
+    protected $titolEs;
 
     /** @ORM\Column(type="text") */
-    protected $blog_ca;
+    protected $blogCa;
     
     /** @ORM\Column(type="text") */
-    protected $blog_es;
+    protected $blogEs;
     
     /** @ORM\Column(type="string", length=50) */
     protected $autor;
     
     /** @ORM\Column(type="string", length=30, nullable=true)*/
-    protected $ruta_imatge;
+    protected $rutaImatge;
 
     /** @Assert\Image(maxSize= "1000k") */
     protected $imatge;
         
     /**
-     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="blogs_ca")
-     * @ORM\JoinColumn(name="categoria_ca_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="blogsCa")
+     * @ORM\JoinColumn(name="categoriaCaId", referencedColumnName="id")
      */
-    protected $categoria_ca;
+    protected $categoriaCa;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="blogs_es")
-     * @ORM\JoinColumn(name="categoria_es_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="blogsEs")
+     * @ORM\JoinColumn(name="categoriaEsId", referencedColumnName="id")
      */
-    protected $categoria_es;
+    protected $categoriaEs;
     
     /** @ORM\Column(type="datetime") */
-    protected $data_publicacio;
+    protected $dataPublicacio;
     
     /** @ORM\Column(type="string", length=50) */
     protected $slug;
     
-    /** @ORM\OneToMany(targetEntity="Comentari", mappedBy="blog_ca") */
-    protected $comentaris_ca;
-    
-    /** @ORM\OneToMany(targetEntity="Comentari", mappedBy="blog_es") */
-    protected $comentaris_es;
+    /** @ORM\OneToMany(targetEntity="Comentari", mappedBy="blogCa",  orphanRemoval=true) */
+    protected $comentaris;
     
 
     public function __construct() {
-        $this->comentaris_ca = new ArrayCollection();
-        $this->comentaris_es = new ArrayCollection();
+        $this->comentaris = new ArrayCollection();
+
     }
 
     public function getId(){
@@ -78,36 +75,36 @@ class Blog {
     }
     
     public function getTitolCa(){
-        return $this->titol_ca;
+        return $this->titolCa;
     }
     
     public function setTitolCa($titol_ca){
-        $this->titol_ca = $titol_ca;
+        $this->titolCa = $titol_ca;
         $this->slug = Util::getSlug($titol_ca);
     }
     
     public function getTitolEs(){
-        return $this->titol_es;
+        return $this->titolEs;
     }
     
     public function setTitolEs($titol_es){
-        $this->titol_es = $titol_es;
+        $this->titolEs = $titol_es;
     }
     
     public function getBlogCa(){
-        return $this->blog_ca;
+        return $this->blogCa;
     }
     
     public function setBlogCa($blog_ca){
-        $this->blog_ca = $blog_ca;
+        $this->blogCa = $blog_ca;
     }
     
     public function getBlogEs(){
-        return $this->blog_es;
+        return $this->blogEs;
     }
     
     public function setBlogEs($blog_es){
-        $this->blog_es = $blog_es;
+        $this->blogEs = $blog_es;
     }
     
     public function getAutor(){
@@ -119,11 +116,11 @@ class Blog {
     }
     
     public function getRutaImatge(){
-        return $this->ruta_imatge;
+        return $this->rutaImatge;
     }
     
     public function setRutaImatge($rutaImatge){
-        $this->ruta_imatge = $rutaImatge;
+        $this->rutaImatge = $rutaImatge;
     }
     
     /**
@@ -142,32 +139,32 @@ class Blog {
     
     public function getCategoriaCa()
     {
-        return $this->categoria_ca;
+        return $this->categoriaCa;
     }
 
     public function setCategoriaCa($categoria_ca)
     {
-        $this->categoria_ca = $categoria_ca;
+        $this->categoriaCa = $categoria_ca;
     }
     
     public function getCategoriaEs()
     {
-        return $this->categoria_es;
+        return $this->categoriaEs;
     }
 
     public function setCategoriaEs($categoria_es)
     {
-        $this->categoria_es = $categoria_es;
+        $this->categoriaEs = $categoria_es;
     }
     
     public function getDataPublicacio()
     {
-        return $this->data_publicacio;
+        return $this->dataPublicacio;
     }
 
     public function setDataPublicacio($data_publicacio)
     {
-        $this->data_publicacio = $data_publicacio;
+        $this->dataPublicacio = $data_publicacio;
     }
         
     public function getSlug(){
@@ -175,57 +172,41 @@ class Blog {
     }
 
     /**
-     * @param \Ikuko\BlogBundle\Entity\Comentari $comentaris_ca
+     * @param \Ikuko\BlogBundle\Entity\Comentari $comentaris
      * @return Blog
      */
-    public function addComentariCa(\Ikuko\BlogBundle\Entity\Comentari $comentaris_ca)
+    public function addComentari(\Ikuko\BlogBundle\Entity\Comentari $comentaris)
     {
-        $this->comentaris_ca[] = $comentaris_ca;
+        $this->comentaris[] = $comentaris;
 
         return $this;
     }
 
     /**
-     * @param \Ikuko\BlogBundle\Entity\Comentari $comentaris_ca
+     * @param \Ikuko\BlogBundle\Entity\Comentari $comentaris
      */
-    public function removeComentariCa(\Ikuko\BlogBundle\Entity\Comentari $comentaris_ca)
+    public function removeComentari(\Ikuko\BlogBundle\Entity\Comentari $comentaris)
     {
-        $this->comentaris_ca->removeElement($comentaris_ca);
+        $this->comentaris->removeElement($comentaris);
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getComentarisCa()
+    public function getComentaris()
     {
-        return $this->comentaris_ca;
+        return $this->comentaris;
     }
-    
-    /**
-     * @param \Ikuko\BlogBundle\Entity\Comentari $comentaris_es
-     * @return Blog
-     */
-    public function addComentariEs(\Ikuko\BlogBundle\Entity\Comentari $comentaris_es)
+
+    public function setSlug($slug)
     {
-        $this->comentaris_es[] = $comentaris_es;
+        $this->slug = $slug;
 
         return $this;
     }
-
-    /**
-     * @param \Ikuko\BlogBundle\Entity\Comentari $comentaris_es
-     */
-    public function removeComentariEs(\Ikuko\BlogBundle\Entity\Comentari $comentaris_es)
-    {
-        $this->comentaris_es->removeElement($comentaris_es);
-    }
-
-    /**
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getComentarisEs()
-    {
-        return $this->comentaris_es;
-    }
     
+    public function __toString()
+    {
+        return $this->getBlogCa();
+    }
 }

@@ -20,37 +20,41 @@ class Colleccio
     protected $id;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $titol_ca;
+    protected $titolCa;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $titol_es;
+    protected $titolEs;
     
     /** @ORM\Column(type="string", length=30)*/
-    protected $nom_imatge;
+    protected $nomImatge;
 
     /** @ORM\Column(type="string", length=30)*/
-    protected $ruta_imatge;
+    protected $rutaImatge;
     
     /** @Assert\Image(maxSize= "1000k") */
     protected $imatge;
     
     /** @ORM\Column(type="string", length=30)*/
     protected $slug;
+    
+    /** @ORM\Column(type="datetime") */
+    protected $dataCreacio;
 
     /**
-     * @ORM\OneToMany(targetEntity="Producte", mappedBy="colleccio_ca")
+     * @ORM\OneToMany(targetEntity="Producte", mappedBy="colleccioCa")
      */
-    protected $productes_ca;
+    protected $productesCa;
     
     /**
-     * @ORM\OneToMany(targetEntity="Producte", mappedBy="colleccio_es")
+     * @ORM\OneToMany(targetEntity="Producte", mappedBy="colleccioEs")
      */
-    protected $productes_es;
+    protected $productesEs;
     
     
     public function __construct() {
-        $this->productes_ca = new ArrayCollection();
-        $this->productes_es = new ArrayCollection();
+        $this->productesCa = new ArrayCollection();
+        $this->productesEs = new ArrayCollection();
+        $this->dataCreacio = new \DateTime();
     }
     
     public function getId(){
@@ -58,36 +62,36 @@ class Colleccio
     }
     
     public function getTitolCa(){
-        return $this->titol_ca;
+        return $this->titolCa;
     }
     
     public function setTitolCa($titol_ca){
-        $this->titol_ca = $titol_ca;
+        $this->titolCa = $titol_ca;
         $this->slug = Util::getSlug($titol_ca);
     }
     
     public function getTitolEs(){
-        return $this->titol_es;
+        return $this->titolEs;
     }
     
     public function setTitolEs($titol_es){
-        $this->titol_es = $titol_es;
+        $this->titolEs = $titol_es;
     }
     
     public function getNomImatge(){
-        return $this->nom_imatge;
+        return $this->nomImatge;
     }
     
     public function setNomImatge($nom_imatge){
-        $this->nom_imatge = $nom_imatge;
+        $this->nomImatge = $nom_imatge;
     }
     
     public function getRutaImatge(){
-        return $this->ruta_imatge;
+        return $this->rutaImatge;
     }
     
     public function setRutaImatge($ruta_imatge){
-        $this->ruta_imatge = $ruta_imatge;
+        $this->rutaImatge = $ruta_imatge;
     }
     
     /**
@@ -108,24 +112,32 @@ class Colleccio
         return $this->slug;
     }
     
+    public function setDataCreacio($dataCreacio){
+        $this->dataCreacio = $dataCreacio;
+    }
+    
+    public function getDataCreacio(){
+        return $this->dataCreacio;
+    }
+    
     public function getProductesCa()
     {
-        return $this->productes_ca;
+        return $this->productesCa;
     }
 
     public function setProductesCa(ArrayCollection $productes_ca)
     {
-        $this->productes_ca = $productes_ca;
+        $this->productesCa = $productes_ca;
     }
     
     public function getProductesEs()
     {
-        return $this->productes_es;
+        return $this->productesEs;
     }
 
     public function setProductesEs(ArrayCollection $productes_es)
     {
-        $this->productes_es = $productes_es;
+        $this->productesEs = $productes_es;
     }
     
     public function __toString()

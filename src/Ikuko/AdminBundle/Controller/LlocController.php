@@ -39,11 +39,11 @@ class LlocController extends Controller {
         ));
     }
 
-    public function editaLlocAction(Request $request, $lloc) {
+    public function editaLlocAction(Request $request, $id_lloc) {
 
         $em = $this->getDoctrine()->getManager();
         $lloc = $em->getRepository('IkukoBlogBundle:Lloc')
-                ->findOneBy(array('id' => $lloc));
+                ->findOneBy(array('id' => $id_lloc));
 
         $form = $this->createForm(new NouLlocTypeForm(), $lloc);
 
@@ -66,13 +66,13 @@ class LlocController extends Controller {
         ));
     }
 
-    public function eliminaLlocAction($lloc) {
+    public function eliminaLlocAction($id_lloc) {
         $em = $this->getDoctrine()->getManager();
         $lloc = $em->getRepository('IkukoBlogBundle:Lloc')
-                ->findOneBy(array('id' => $lloc));
+                ->findOneBy(array('id' => $id_lloc));
 
-        if (!$lloc) {
-            throw $this->createNotFoundException('No s\'ha trobat cap lloc d\'interés amb id: ' . $lloc);
+        if (!$id_lloc) {
+            throw $this->createNotFoundException('No s\'ha trobat cap lloc d\'interés amb id: ' . $id_lloc);
         }
         $em->remove($lloc);
         $em->flush();

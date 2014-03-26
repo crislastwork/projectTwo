@@ -21,12 +21,24 @@
         <td>{{ lloc.nomCa }}</td>
         <td>{{ lloc.nomEs }}</td>
         <td>{{ lloc.link }}</td>
-        <td><a href={{ path('ikuko_admin_edita_lloc', {'lloc': lloc.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_lloc', {'id_lloc': lloc.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_lloc', {'lloc': lloc.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_lloc', {'id_lloc': lloc.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar el lloc?');
+    });
+    
+</script>
 
 {% endblock %}

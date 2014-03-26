@@ -19,12 +19,24 @@
     <tr>
         <td>{{ tag.tagCa }}</td>
         <td>{{ tag.tagEs }}</td>
-        <td><a href={{ path('ikuko_admin_edita_tag', {'tag': tag.id }) }}>
+        <td><a href={{ path('ikuko_admin_edita_tag', {'id_tag': tag.id }) }}>
             <img width="40px" src="{{ asset(directori_imatges ~ 'edit.png') }}"/></a></td>
-        <td><a href={{ path('ikuko_admin_elimina_tag', {'tag': tag.id }) }}>
+        <td><a href={{ path('ikuko_admin_elimina_tag', {'id_tag': tag.id }) }} class='confirmacio'>
             <img width="40px" src="{{ asset(directori_imatges ~ 'delete.png') }}"/></a></td>
     </tr>
 {% endfor %}
 </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+    $('.confirmacio').on('click', function () {
+        return confirm('Segura que vols eliminar el tag?');
+    });
+    
+</script>
 
 {% endblock %}
