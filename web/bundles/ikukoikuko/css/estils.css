@@ -21,7 +21,7 @@ body{
 }
 
 #inmenuleft{
-    width: 300px;
+    width: 250px;
     float: left;
 }
 
@@ -88,11 +88,12 @@ body{
     font-size: 14px;
 }
 
-#inmenuright li{
-    display: inline;
+#inmenuright ul li{
+    display: inline-table;
 }
 
-#inmenuright li a{
+#inmenuright ul li a{
+    display: inline-block;
     font-family: 'Alegreya Sans', sans-serif;
     font-weight: 300;
     text-decoration: none;
@@ -100,13 +101,30 @@ body{
     text-shadow: 0px 0px 9px rgba(0, 0, 0, 1);
 }
 
-#inmenuright li a:hover{
+#inmenuright ul li a:hover{
     color: grey;
+}
+
+
+#inmenuright ul li.dropdown > ul.dropdown-menu{
+    display: none;
+}
+
+#inmenuright ul li.dropdown:hover > ul.dropdown-menu{
+    display: block;
+    margin: 0;
+    font-family: 'Alegreya Sans', sans-serif;
+    text-decoration: none;
+}
+
+#inmenuright ul li.dropdown > ul.dropdown-menu li a:hover{
+    color: grey;
+    text-decoration: none;  
 }
 
 /* estils del slider index */
 
-#textslider{
+.textslider{
     margin:auto;
     width: 960px;
     font-family: 'Bree Serif', serif;
@@ -214,4 +232,63 @@ body{
 }
 
 
-/*** productes index ******/
+/*** collecctions index ******/
+
+#newcolleccions{
+    width: 100%;
+}
+
+#newstitle2 {
+    margin-top: 65px;
+    margin-left: 16px;
+    color: #2E2E2E;
+}
+
+
+/******************/
+.colleccions {
+    margin-left: 16px;
+    width: 930px;
+    height: 380px;
+    
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.colleccions:hover {
+  -webkit-filter: grayscale(100%);
+}
+/******************/
+
+.colleccions h1{
+    z-index: 10000;
+    position: absolute;
+    text-decoration: none;
+    font-family: 'Bree Serif', serif;
+    color: white;
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 1);
+    width: 100%;
+}
+
+.colleccions img{
+    position: relative;
+}
+
+
+/*** pagina blogs ******/
+
+#head{
+    position:relative;
+    background-color: #DBDBDB;
+    width: 100%;
+    height: 300px;
+}
+
+#indexblogs{
+    margin-top: 16px;
+    width:960px;
+    margin: auto;
+}
